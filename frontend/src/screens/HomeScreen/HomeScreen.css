@@ -1,0 +1,215 @@
+.HomeContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+    padding-top: 55px;
+}
+
+.HomeContainerTop{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+}
+
+.HomeSwiperSlide{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    z-index: 0;
+}
+
+.HomeSwiper{
+    width: 100%;
+}
+
+.HomeSwiperSlideImg{
+    max-width: 100%;
+    min-height: 70vh;
+    object-fit: cover;
+}
+
+.HomeSwiperBtnsDiv{
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+
+.HomeSwiperBtnsDiv button{
+    z-index: 1;
+    background-color: rgba(108, 108, 108, 0.66);
+    width: 50px;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.HomeSwiperBtnIcon{
+    width: 80%;
+    color: white;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: white !important;
+    width: 0.5rem !important;
+    height: 0.5rem!important;
+}
+
+.swiper-pagination-bullet {
+    width: 0.5rem !important;
+    height: 0.5rem !important;
+}
+
+.HomeContainer1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+}
+
+.HomeCategoriesContainer{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
+    grid-auto-rows: 130px;
+    margin-top: 1rem;
+    gap: 1rem;
+    width: 90%;
+    justify-content: space-between;
+}
+
+.HomeCategoryDiv{
+    /* background-color: whitesmoke; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+    justify-self: center;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+.HomeCategoryDivIcon{
+    width: 30%;
+}
+
+.HomeCategoryDiv p{
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+.HomeContainer1H1{
+    display: none;
+}
+
+.HomeContainerCategoriesGrid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
+    grid-row: 130px;
+    gap: 1rem;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 2rem;
+    margin-bottom: -1rem;
+}
+
+@media(min-width: 770px){
+    .HomeContainer{
+        padding-top: 88px;
+    }
+}
+
+@media(min-width: 800px){
+    .HomeSwiperSlideImg{
+        aspect-ratio: 9/3;
+    }
+}
+
+@media(min-width: 880px){
+    .HomeContainer{
+        padding-top: 103px;
+    }
+}
+
+@media(min-width: 900px){
+    .HomeCategoriesContainer{
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+        grid-auto-rows: 130px;
+    }
+}
+
+@media(min-width: 1024px){
+    .HomeSwiperSlideImg{
+        aspect-ratio: 16/5;
+        height: auto;
+    }
+
+    .HomeContainerTop{
+        flex-direction: row;
+        width: 90%;
+    }
+
+    .HomeSwiperBtnsDiv{
+        display: flex;
+    }
+
+    .swiper-pagination-bullet-active {
+        width: 0.6rem !important;
+        height: 0.6rem!important;
+    }
+    
+    .swiper-pagination-bullet {
+        width: 0.6rem !important;
+        height: 0.6rem !important;
+    }
+
+    .HomeContainer1H1{
+        width: 90%;
+        font-size: 1.6rem;
+        font-weight: 500;
+        display: flex;
+        margin: 20px 0px 10px 0px;
+    }
+}
+
+@media(min-width: 1220px){
+    .HomeContainer1{
+        width: 85%;
+    }
+
+    .HomeContainerTop{
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .HomeCategoriesContainer{
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+        grid-auto-rows: 140px;
+        width: 100%;
+    }
+
+    .HomeCategoryDiv p{
+        font-size: 1rem;
+    }
+
+    .HomeContainer1H1{
+        width: 100%;
+    }
+}
+
+@media(min-width: 1880px){
+    .HomeContainer1{
+        width: 1500px;
+    }
+}

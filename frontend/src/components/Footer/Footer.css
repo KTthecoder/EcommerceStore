@@ -1,0 +1,206 @@
+.FooterContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 100px;
+    padding: 0px 0px 0px 0px;
+    background-color: rgb(250, 250, 250);
+}
+
+.FooterTop{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 0px;
+    border-bottom: 1px solid rgb(185, 185, 185);
+}
+
+.FooterTopH2{
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.FooterTopP{
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.FooterTopInput{
+    padding: 7px 12px;
+    border-radius: 5px;
+    margin-top: 15px;
+    outline: none;
+    border: 1px solid rgb(185, 185, 185);
+}
+
+.FooterTopBtn{
+    background-color: #111;
+    padding: 7px 0px;
+    width: 130px;
+    border-radius: 5px;
+    margin-top: 15px;
+    color: white;
+}
+
+.FooterContainerBotP{
+    background-color: rgb(242, 242, 242);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    padding: 12px 0px;
+}
+
+.FooterMid{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 90%;
+    margin: 15px 0px 10px 0px;
+    flex-direction: column;
+}
+
+.FooterMidLeft{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.FooterMidLeft{
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin: 0px;
+    padding: 0px;
+}
+
+.FooterMidLeftIcons{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 200px;
+    margin-top: 15px;
+}
+
+.FooterMidLeftIcon{
+    width: 25px;
+    margin: 0px 5px;
+}
+
+.FooterMidLeftIcons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.FooterMidRight{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+}
+
+.FooterMidRight1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.FooterMidRight h2{
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.FooterMidRightDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 13px;
+}
+
+.FooterMidRightDiv p{
+    line-height: 30px;
+}
+
+@media(min-width: 450px){
+    .FooterTopInput{
+        width: 50%;
+    }
+}
+
+@media(min-width: 640px){
+    .FooterTopBtn{
+        margin-top: 20px;
+    }
+
+    .FooterTopInput{
+        margin-top: 20px;
+    }
+
+    .FooterMid{
+        flex-direction: row;
+    }
+}
+
+/* @media(min-width: 700px){
+    .FooterMidLeft{
+        align-items: flex-start;
+    }
+
+    .FooterMidLeftIcons{
+        justify-content: flex-start;
+    }
+} */
+
+@media(min-width: 800px){
+    .FooterTopBtn{
+        margin-top: 20px;
+        padding: 10px 0px;
+    }
+
+    .FooterTopInput{
+        margin-top: 20px;
+    }
+
+    .FooterTopH2{
+        font-size: 1.5rem;
+    }
+
+    .FooterTopP{
+        font-size: 1.1rem;
+    }
+
+    .FooterMid{
+        width: 650px;
+    }
+}
+
+@media(min-width: 1000px){
+    .FooterTopBtn{
+        width: 160px;
+    }
+
+    .FooterTopH2{
+        font-size: 1.8rem;
+    }
+
+    .FooterTopInput{
+        width: 550px;
+        padding: 10px 15px;
+    }
+}

@@ -1,0 +1,235 @@
+.ProfileContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.ProfileContainer1{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 90%;
+    margin-top: 70px;
+    flex-direction: column;
+}
+
+.ProfileContainer1H1{
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.ProfileContainer1Header{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.ProfileContainer1HeaderBtn{
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px 20px;
+    margin-right: 15px;
+}
+
+.ProfileContainer1Main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.ProfileContainer1MainBlock{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border-bottom: 1px solid rgb(181, 181, 181);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    flex-direction: column;
+}
+
+.ProfileContainer1MainBlockDiv{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.ProfileContainer1MainBlockDiv1{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.ProfileContainer1MainBlockH1{
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-right: 30px;
+}
+
+.ProfileContainer1MainBlockP{
+    font-size: 1.1rem;
+}
+
+.ProfileContainer1MainBlockPrice{
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-right: 30px;
+    margin-top: 10px;
+}
+
+.ProfileContainer1MainBlockBtn{
+    background-color: black;
+    color: white;
+    padding: 8px 0px;
+    width: 130px;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.ProfileContainer1MainBlockH1Top{
+    width: 25%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: 1.1rem;
+}
+
+.ProfileContainer1MainBlockPTop{
+    width: 25%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: 1.1rem;
+}
+
+.ProfileContainer1MainBlockPriceTop{
+    width: 35%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: 1.1rem;
+}
+
+.ProfileContainer1MainBlockBtnTop{
+    width: 15%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: 1.1rem;
+}
+
+.ProfileContainer1MainBlock1{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(181, 181, 181);
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.ProfileContainer1MainBlock1{
+    display: none;
+}
+
+@media(min-width: 700px){
+    .ProfileContainer1MainBlockDiv1{
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 0px 0px 0px 0px;
+        padding: 0px;
+        width: 50%;
+    }
+
+    .ProfileContainer1MainBlock1{
+        display: flex;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+
+    .ProfileContainer1MainBlockBtn{
+        margin-top: 0px;
+    }
+
+    .ProfileContainer1Main{
+        margin-top: 40px;
+    }
+
+    .ProfileContainer1MainBlock{
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .ProfileContainer1MainBlockDiv{
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .ProfileContainer1MainBlockPrice{
+        margin-top: 0px;
+    }
+
+    .ProfileContainer1MainBlockH1{
+        width: 100%;
+        margin: 0px;
+    }
+
+    .ProfileContainer1MainBlockP{
+        width: 100%;
+        margin: 0px;
+    }
+
+    .ProfileContainer1MainBlockPrice{
+        width: 70%;
+        margin: 0px;
+    }
+
+    .ProfileContainer1MainBlockBtn{
+        width: 30%;
+        margin: 0px;
+    }
+}
+
+@media(min-width: 770px){
+    .ProfileContainer1{
+        margin-top: 110px;
+    }
+
+    .ProfileContainer1H1{
+        font-size: 1.6rem;
+    }
+
+    .ProfileContainer1Header{
+        margin-top: 20px;
+    }
+}
+
+@media(min-width: 880px){
+    .ProfileContainer1{
+        margin-top: 130px;
+    }
+}
+
+@media(min-width: 1220px){
+    .ProfileContainer1{
+        width: 85%;
+    }
+}
+
+@media(min-width: 1880px){
+    .ProfileContainer1{
+        width: 1500px;
+    }
+}

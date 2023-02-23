@@ -1,0 +1,57 @@
+.ConfirmOrderContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.ConfirmOrderContainer1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    flex-direction: column;
+    margin-top: 80px;
+}
+
+.ConfirmOrderContainerIcon{
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+.ConfirmOrderContainer1H1{
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.ConfirmOrderContainer1H2{
+    font-weight: 500;
+    font-size: 1.05rem;
+    margin-bottom: 20px;
+    margin-top: 5px;
+}
+
+@media(min-width: 770px){
+    .ConfirmOrderContainer{
+        margin-top: 50px;
+    }
+
+    .ConfirmOrderContainer1{
+        width: 450px;
+    }
+
+    .ConfirmOrderContainer1H1{
+        font-size: 1.4rem;
+    }
+
+    .ConfirmOrderContainer1H2{
+        font-size: 1.2rem;
+    }
+}
+
+@media(min-width: 88px){
+    .ConfirmOrderContainer{
+        margin-top: 100px;
+    }
+}

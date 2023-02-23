@@ -1,0 +1,26 @@
+.ProductSliderContainerSmall{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 2.5rem;
+}
+
+@media(min-width: 1024px){
+    .ProductSliderContainerSmall{
+        width: 48%;
+        justify-content: space-between;
+    }
+
+    .ProductSliderContainerSmall1{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .ProductSliderSwiperSmall{
+        width: 100%;
+    }
+}

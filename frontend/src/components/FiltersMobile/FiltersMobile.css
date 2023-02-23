@@ -1,0 +1,149 @@
+.FiltersMobileContainer{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    height: 100vh;
+    z-index: 3;
+    background-color: whitesmoke;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-y: scroll;
+}
+
+.FiltersMobileContainer1{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 90%;
+    flex-direction: column;
+    padding-bottom: 100px;
+}
+
+.FiltersMobileHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 55px;
+}
+
+.FiltersMobileHeaderText{
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.FiltersMobileHeaderIcon{
+    width: 35px;
+}
+
+.FiltersMobileDiv{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 10px;
+    overflow-x: scroll;
+}
+
+.FiltersMobileDiv1{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-bottom: 10px;
+}
+
+.FiltersMobileDivBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(204, 204, 204);
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: white;
+    margin-top: 0px;
+    width: 250px;
+    margin-right: 20px;
+}
+
+.FiltersMobileDivNext{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 1rem;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.FiltersMobileDivBtnNext{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(204, 204, 204);
+    padding: 10px 0px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.FiltersMobileApplyBtnDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    position: fixed;
+    bottom: 0;
+    padding: 15px 0px;
+    background-color: whitesmoke;
+}
+
+.FiltersMobileApplyBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    background-color: black;
+    color: white;
+    padding: 10px 0px;
+    border-radius: 5px;
+}
+
+.FiltersMobileDivBtnNextIcon{
+    width: 22px;
+    margin-left: 5px;
+}
+
+.FiltersMobileDivNext1{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+@media(min-width: 1220px){
+    .FiltersMobileDiv1{
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 80%;
+    }
+
+    .FiltersMobileDivBtn{
+        width: 100%;
+    }
+
+    .FiltersMobileDivBtn{
+        margin-bottom: 15px;
+    }
+
+    .FiltersMobileHeaderText{
+        margin-bottom: 15px;
+        letter-spacing: 1.2px;
+    }
+
+    .FiltersMobileDivBtnNext{
+        width: 80%;
+    }
+}

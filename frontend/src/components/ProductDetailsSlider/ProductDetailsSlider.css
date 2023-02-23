@@ -1,0 +1,45 @@
+.HomeSwiperSlideImgg{
+    aspect-ratio: 7/5;
+    object-fit: cover;
+}
+
+.ProductDetailsSwiper{
+    width: 100%;
+}
+
+@media(min-width: 600px){
+    .HomeSwiperSlideImgg{
+        aspect-ratio: 8/4;
+    }
+}
+
+@media(min-width: 850px){
+    .HomeSwiperSlideImgg{
+        aspect-ratio: 9/4;
+    }
+}
+
+@media(min-width: 1024px){
+    .ProductDetailsSwiper{
+        width: 90%;
+        margin-top: 50px;
+    }
+
+    .HomeSwiperSlideImgg{
+        aspect-ratio: 8/4;
+    }
+}
+
+@media(min-width: 1160px){
+    .ProductDetailsSwiper{
+        width: 100%;
+    }
+
+    .ProductDetailsSwiper{
+        margin-top: 0px;
+    }
+
+    .HomeSwiperSlideImgg{
+        aspect-ratio: 9/6;
+    }
+}

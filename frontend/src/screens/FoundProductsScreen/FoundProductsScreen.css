@@ -1,0 +1,383 @@
+.FoundProductsContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 70px;
+}
+
+.FoundProductsContainer1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    flex-direction: column;
+}
+
+.FoundProductsContainer1Top{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    flex-direction: column;
+    border-bottom: 1px solid rgb(192, 192, 192);
+    padding-bottom: 10px;
+    margin-top: -20px;
+}
+
+.FoundProductsContainer1Top14{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: -5px;
+    margin-top: 25px;
+}
+
+.FoundProductsContainer1Top14 p{
+    color: gray;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.FoundProductsContainer1Top14 p:first-child{
+    margin-bottom: 5px;
+}
+
+.FoundProductsContainer1Topp1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+    padding-bottom: 10px;
+    background-image: url('../../static/banner1.jpg');
+    object-fit: cover;
+    background-position: center;
+    background-size: cover;
+    aspect-ratio: 16/7;
+    margin-top: 55px;
+    margin-bottom: -55px;
+    padding: 20px 0px 30px 0px;
+    position: relative;
+}
+
+.FoundProductsContainer1Topp1:before{
+    background-color: #33333375;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    content: '';
+}
+
+.FoundProductsContainer1Topp2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    flex-direction: column;
+}
+
+.FoundProductsContainer1Top1{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: -5px;
+    margin-top: 25px;
+}
+
+.FoundProductsContainer1Top1 p{
+    color: gray;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.FoundProductsContainer1TopP{
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.FoundProductsContainer1Btn{
+    border-radius: 5px;
+    border: 1px solid rgb(192, 192, 192);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 0px;
+    margin-top: 20px;
+}
+
+.FoundProductsContainer1BtnIcon{
+    width: 26px;
+    margin-right: 5px;
+}
+
+.FoundProductsContainer1Main{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 2rem 1rem;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.FoundProductsContainer1Main1{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    flex-direction: column;
+}
+
+.FoundProductsContainer1Main1Left{
+    display: none;
+}
+
+.FoundProductsContainer1TopH1{
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.FoundProductsContainer1TopH11{
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.FoundProductsContainer1TopH112{
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.FoundProductsContainer1Top2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.FoundProductsContainer1Toppp1{
+    display: none;
+}
+
+.FoundProductsContainer1Main11{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+}
+
+@media(min-width: 460px){
+    .FoundProductsContainer1Main{
+        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    }
+
+    .FoundProductsContainer1TopH112{
+        font-size: 2rem;
+        font-weight: 600;
+        text-align: center;
+        color: white;
+        position: relative;
+    }
+}
+
+@media(min-width: 770px){
+    .FoundProductsContainer{
+        padding-top: 105px;
+    }
+
+    .FoundProductsContainer1Main{
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+
+    .FoundProductsContainer1Topp1{
+        margin-top: 87px;
+        margin-bottom: -95px;
+    }
+
+    .FoundProductsContainer1Topp2{
+        padding: 10px 0px 10px 0px;
+    }
+
+    .FoundProductsContainer1TopH1{
+        font-size: 1.8rem;
+    }
+
+    .FoundProductsContainer1TopH11{
+        font-size: 1.8rem;
+    }
+
+    .FoundProductsContainer1Topp1{
+        aspect-ratio: 16/5;
+    }
+
+    .FoundProductsContainer1Top14{
+        margin-top: 25px;
+    }
+}
+
+@media(min-width: 880px){
+    .FoundProductsContainer{
+        padding-top: 130px;
+    }
+
+    .FoundProductsContainer1Topp1{
+        margin-top: 100px;
+    }
+
+    .FoundProductsContainer1Topp1{
+        margin-bottom: -110px;
+    }
+
+    .FoundProductsContainer1TopH112{
+        font-size: 2.5rem;
+    }
+
+    .FoundProductsContainer1Top14{
+        margin-top: 20px;
+    }
+}
+
+@media(min-width: 1024px){
+    .FoundProductsContainer1TopP{
+        font-size: 1.1rem;
+    }
+}
+
+@media(min-width: 1220px){
+    .FoundProductsContainer1Btn{
+        display: none;
+    }
+
+    .FoundProductsContainer{
+        margin-top: -20px;
+    }
+
+    .FoundProductsContainer1Topp2{
+        width: 85%;
+    }
+
+    .FoundProductsContainer1Main{
+        margin-top: 0px;
+    }
+
+    .FoundProductsContainer1Main{
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+
+    .FoundProductsContainer1{
+        width: 85%;
+    }
+
+    .FoundProductsContainer1Main1{
+        flex-direction: row;
+        margin-top: 30px;
+    }
+
+    .FoundProductsContainer1Main1Left{
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        width: 350px;
+    }
+
+    .FoundProductsContainer1Topp1{
+        display: none;
+    }
+
+    .FoundProductsContainer1Toppp1{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        background-image: url('../../static/banner1.jpg');
+        object-fit: cover;
+        background-position: center;
+        background-size: cover;
+        aspect-ratio: 16/6;
+        margin-bottom: 40px;
+        margin-top: 10px;
+        border-radius: 5px;
+        position: relative;
+    }
+
+    .FoundProductsContainer1Toppp1:before{
+        background-color: #33333375;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        content: '';
+    }
+
+    .FoundProductsContainer1Topp22{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .FoundProductsContainer1TopH11{
+        color: white;
+        position: relative;
+        font-weight: 600;
+        letter-spacing: 1.1px;
+        font-size: 2.5rem;
+    }
+
+    .FoundProductsContainer1Top1{
+        margin-bottom: 15px;
+        margin-top: 0px;
+    }
+
+    .FoundProductsContainer1Top1 p{
+        font-size: 1rem;
+    }
+
+    .FoundProductsContainer1Top14{
+        margin-top: 40px;
+    }
+
+    .FoundProductsContainer1Top14 p:first-child{
+        margin-bottom: 10px;
+    }
+}
+
+@media(min-width: 1600px){
+    .FoundProductsContainer1TopH11{
+        font-size: 3rem;
+    }
+}
+
+@media(min-width: 1800px){
+    .FoundProductsContainer1Main{
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}
+
+@media(min-width: 1880px){
+    .FoundProductsContainer1Main{
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 2rem 1.3rem;
+    }
+
+    .FoundProductsContainer1{
+        width: 1500px;
+    }
+
+    .FoundProductsContainer1Topp2{
+        width: 1500px;
+    }
+}

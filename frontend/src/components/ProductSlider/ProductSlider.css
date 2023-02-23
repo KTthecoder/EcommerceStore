@@ -1,0 +1,200 @@
+.ProductSliderContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 2.5rem;
+}
+
+.CategorySliderContainer{
+    margin-top: 1.5rem;
+}
+
+.ProductSliderContainerH1{
+    width: 90%;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.ProductSliderSwiper{
+    width: 90%;
+}
+
+.ProductSliderSlide{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+}
+
+.ProductSliderSlideLink{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    flex-direction: column;
+}
+
+.ProductSliderSlideImg{
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.ProductSliderStarsDiv{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.ProductSliderStarsDiv1{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+.ProductSliderStarIcon{
+    width: 1.1rem;
+    height: 1.1rem;
+}
+
+.ProductSliderStarsDivRatings{
+    margin-right: 3px;
+    color: #222;
+    font-size: 0.95rem;
+}
+
+.ProductSliderSlideLinkDiv{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.ProductSliderSlideLinkDivPrice{
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.ProductSliderSlideLinkDivDiscountPrice{
+    font-size: 0.9rem;
+    color: gray;
+    text-decoration: line-through;
+    margin-left: 5px;
+}
+
+.ProductSliderSlideLinkDivTitle{
+    width: 100%;
+    font-size: 0.95rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 5px;
+}
+
+.ProductSliderSlideLinkDivBought{
+    font-size: 0.9rem;
+    color: rgb(98, 98, 98);
+    margin-top: 5px;
+}
+
+.ProductSliderBtnsDiv{
+    display: none;
+}
+
+.ProductSliderContainer1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 10px 0px 20px 0px;
+}
+
+.ProductSliderShowMoreBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    background-color: #222;
+    color: white;
+    padding: 10px 0px;
+    border-radius: 5px;
+    margin-top: 40px;
+}
+
+@media(min-width: 1024px){
+    .ProductSliderBtnsDiv{
+        display: flex;
+        z-index: 1;
+    }
+
+    .ProductSliderContainerH1{
+        font-size: 1.5rem;
+    }
+
+    .ProductSliderContainer{
+        margin-top: 3rem;
+    }
+
+    .ProductSliderBtnsDiv button{
+        background-color: rgb(255, 255, 255);
+        border-radius: 100px;
+        padding: 3px;
+        margin-left: 15px;
+    }
+
+    .ProductSliderBtnIcon{
+        width: 2rem;
+        height: 2rem;
+        color: #111;
+    }
+
+    .ProductSliderSlideLinkDivPrice{
+        font-size: 1.2rem;
+    }
+
+    .ProductSliderContainer1{
+        margin: 10px 0px 30px 0px;
+    }
+}
+
+@media(min-width: 1220px){
+    .ProductSliderSwiper{
+        width: 100%;
+    }
+
+    .CategorySliderContainer{
+        width: 85%;
+    }
+
+    .ProductSliderContainer1{
+        width: 100%;
+    }
+
+    .ProductSliderSlideImg{
+        height: 200px;
+    }
+}
+
+@media(min-width: 1500px){
+    .ProductSliderSlideLinkDivTitle{
+        font-size: 1rem;
+    }
+
+    .ProductSliderSlideLinkDivPrice{
+        font-size: 1.3rem;
+        margin-right: 3px;
+    }
+
+    .ProductSliderSlideLinkDiv{
+        margin: 8px 0px 0px 0px;
+    }
+}
