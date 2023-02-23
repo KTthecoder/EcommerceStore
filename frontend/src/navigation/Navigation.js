@@ -12,6 +12,7 @@ import PaymentScreen from '../screens/PaymentScreen/PaymentScreen'
 import ProductDetailsScreen from '../screens/ProductDetailsScreen/ProductDetailsScreen'
 import ProductsInCategoryScreen from '../screens/ProductsInCategoryScreen/ProductsInCategoryScreen'
 import ProfileScreen from '../screens/ProfileScreen/ProfileScreen'
+import ProfileSettingsScreen from '../screens/ProfileSettingsScreen/ProfileSettingsScreen'
 import RegisterScreen from '../screens/RegisterScreen/RegisterScreen'
 import ShippingScreen from '../screens/ShippingScreen/ShippingScreen'
 import PrivateRoute from '../utils/PrivateRoute'
@@ -33,12 +34,24 @@ function Navigation() {
       <Route exact path='/cart' element={<PrivateRoute/>}>
         <Route exact path='/cart' element={<CartScreen/>} />
       </Route>
-      
-      <Route exact path='/shipping-info' element={<ShippingScreen/>} />
-      <Route exact path='/payment' element={<PaymentScreen/>} />
-      <Route exact path='/confirm-order' element={<ConfirmOrderScreen/>} />
-      <Route exact path='/favorite' element={<FavoriteScreen/>} />
-      <Route exact path='/profile' element={<ProfileScreen/>} />
+      <Route exact path='/shipping-info' element={<PrivateRoute/>}>
+        <Route exact path='/shipping-info' element={<ShippingScreen/>} />
+      </Route>
+      <Route exact path='/payment' element={<PrivateRoute/>}>
+        <Route exact path='/payment' element={<PaymentScreen/>} />
+      </Route>
+      <Route exact path='/confirm-order' element={<PrivateRoute/>}>
+        <Route exact path='/confirm-order' element={<ConfirmOrderScreen/>} />
+      </Route>
+      <Route exact path='/favorite' element={<PrivateRoute/>}>
+        <Route exact path='/favorite' element={<FavoriteScreen/>} />
+      </Route>
+      <Route exact path='/profile' element={<PrivateRoute/>}>
+        <Route exact path='/profile' element={<ProfileScreen/>} />
+      </Route>
+      <Route exact path='/settings' element={<PrivateRoute/>}>
+        <Route exact path='/settings' element={<ProfileSettingsScreen/>} />
+      </Route>
     </Routes>
   )
 }

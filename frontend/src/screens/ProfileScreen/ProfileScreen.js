@@ -1,6 +1,6 @@
 import React from 'react'
 import './ProfileScreen.css'
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Footer from '../../components/Footer/Footer';
 
 const ProfileScreen = () => {
@@ -10,8 +10,8 @@ const ProfileScreen = () => {
             <div className='ProfileContainer1'>
                 <h1 className='ProfileContainer1H1'>Your Orders</h1>
                 <div className='ProfileContainer1Header'>
-                    <Link className='ProfileContainer1HeaderBtn' to={'/profile'}>Orders</Link>
-                    <Link className='ProfileContainer1HeaderBtn' to={'/profile/settings'}>Settings</Link>
+                    <NavLink className={({ isActive }) => (isActive ? 'ProfileContainer1HeaderBtn' : 'ProfileContainer1HeaderBtnDis')} to={'/profile'}>Orders</NavLink>
+                    <NavLink className={({ isActive }) => (isActive ? 'ProfileContainer1HeaderBtn' : 'ProfileContainer1HeaderBtnDis')} to={'/settings'}>Settings</NavLink>
                 </div>
                 <div className='ProfileContainer1Main'>
                     <div className='ProfileContainer1MainBlock1'>
