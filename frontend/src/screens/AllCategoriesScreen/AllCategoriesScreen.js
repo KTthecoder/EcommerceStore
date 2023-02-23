@@ -1,10 +1,12 @@
 import React from 'react'
 import AllCategoriesBlock from '../../components/AllCategoriesBlock'
 import './AllCategoriesScreen.css'
+import Footer from '../../components/Footer/Footer.js'
 
 const AllCategoriesScreen = () => {
   return (
-    <div className='AllCategoriesContainer'>
+    <>
+      <div className='AllCategoriesContainer'>
         <div className='AllCategoriesContainerTop'>
             <h1>All Categories</h1>
         </div>
@@ -16,7 +18,10 @@ const AllCategoriesScreen = () => {
             <AllCategoriesBlock/>
             <AllCategoriesBlock/>
         </div>
-    </div>
+      </div>
+      <Footer/>
+    </>
+    
   )
 }
 

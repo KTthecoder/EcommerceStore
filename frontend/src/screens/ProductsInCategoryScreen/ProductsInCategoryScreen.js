@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import FiltersDesktop from '../../components/FiltersDesktop'
 import FiltersMobile from '../../components/FiltersMobile/FiltersMobile'
+import Footer from '../../components/Footer/Footer'
 import ProductInSlider from '../../components/ProductInSlider'
 
 const ProductsInCategoryScreen = () => {
@@ -58,6 +59,7 @@ const ProductsInCategoryScreen = () => {
                     </div>                    
                 </div>
             </div>
+            <Footer/>
         </>
        
     )

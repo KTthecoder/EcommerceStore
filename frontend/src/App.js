@@ -1,22 +1,21 @@
 import { BrowserRouter } from "react-router-dom";
-import Footer from "./components/Footer/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import AuthProvider from "./contexts/AuthProvider";
 import Navbar from "./navigation/Navbar";
 import Navigation from "./navigation/Navigation";
 
 function App() {
   return (
     <BrowserRouter>
-    <ScrollToTop/>
-      <nav>
-        <Navbar/>
-      </nav>
-      <main>
-        <Navigation/>
-      </main>
-      <footer>
-        <Footer/>
-      </footer>
+      <AuthProvider>
+        <ScrollToTop/>
+        <nav>
+          <Navbar/>
+        </nav>
+        <main>
+          <Navigation/>
+        </main>
+      </AuthProvider>
     </BrowserRouter>
   );
 }
