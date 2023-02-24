@@ -24,6 +24,7 @@ const AuthProvider = (props) => {
         })
         let data = await response.json()
         if(response.status == 200){
+            console.log(data)
             setRefreshToken(data.refresh)
             setAccessToken(data.access)
             setUser(jwt_decode(data.access))
@@ -86,7 +87,7 @@ const AuthProvider = (props) => {
             updateToken()
         }
 
-        let fourMinutes = 1000 * 58
+        let fourMinutes = 1000 * 60 * 59
         let interval = setInterval(() => {
             if(accessToken){
                 updateToken()
