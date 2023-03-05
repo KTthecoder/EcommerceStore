@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import './Navbar.css'
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
     const [showMenu, setShowMenu] = useState(false)
     const navigation = useNavigate()
+    const location = useLocation()
 
     useEffect(() => {
         setShowMenu(false)
-    }, [])
+    }, [location])
 
     return (
         <div className='NavbarContainer'>
