@@ -12,3 +12,7 @@ class AllCategoriesSerilizer(serializers.ModelSerializer):
         model = ProductCategories
         fields = ['id', 'name', 'slug', 'iconImg', 'iconImgAlt', 'subcategories']
 
+class HomeCategoriesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProductCategories
+        fields = ['id', 'name', 'slug']

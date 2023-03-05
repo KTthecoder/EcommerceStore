@@ -23,6 +23,7 @@ from rest_framework_simplejwt.views import (
 )
 from accountApp.views import *
 from categoriesApp.views import *
+from mainApp.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,5 +34,10 @@ urlpatterns = [
 
     #categoriesApp
     path('api/all-categories', AllCategories, name='AllCategories'),
+
+    #mainApp
+    path('api/home', HomePage, name='HomePage'),
+    path('api/category/<slug:slug>', ProductsByCategory, name='ProductsByCategory'),
+    path('api/products/<str:search>', ProductsByCategory, name='ProductsByCategory'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
