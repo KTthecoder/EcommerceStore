@@ -6,6 +6,7 @@ const Navbar = () => {
     const [showMenu, setShowMenu] = useState(false)
     const navigation = useNavigate()
     const location = useLocation()
+    const [searchValue, setSearchValue] = useState('')
 
     useEffect(() => {
         setShowMenu(false)
@@ -16,8 +17,8 @@ const Navbar = () => {
             <div className='NavbarContainer1'>
                 <a href='/' className='NavbarContH1'>market</a>
                 <div className='NavbarMenuDrawerSearchDiv1'>
-                    <input type='text' className='NavbarMenuDrawerSearchInp1' placeholder='Search in market' />
-                    <button className='NavbarMenuDrawerSearchBtnDiv1' onClick={() => navigation('/search/product-slug')}>
+                    <input type='text' className='NavbarMenuDrawerSearchInp1' placeholder='Search in market' onChange={(value) => setSearchValue(value.target.value)}/>
+                    <button className='NavbarMenuDrawerSearchBtnDiv1' onClick={() => navigation(`/search/${searchValue}`)}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="NavbarMenuDrawerLinkDiv1Icon">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                         </svg>

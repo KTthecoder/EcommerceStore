@@ -94,13 +94,19 @@
     border-bottom: 0px;
 }
 
+.CartContainerRightDivImg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .CartContainerRightDivImgDiv{
     width: 30%;
     height: 100px;
-    object-fit: contain;
-    background-image: url('../../static//img.webp');
-    background-position: center;
-    background-size: cover;
+    object-fit: cover;
+    /* background-image: url('../../static//img.webp'); */
+    /* background-position: center;
+    background-size: cover; */
 }
 
 .CartContainerRightDiv1{

@@ -27,6 +27,7 @@ function Navigation() {
       <Route exact path='/' element={<HomeScreen/>} />
       <Route exact path='/product/:slug' element={<ProductDetailsScreen/>} />
       <Route exact path='/search/:slug' element={<FoundProductsScreen/>} />
+      <Route exact path='/search/' element={<FoundProductsScreen/>} />
       <Route exact path='/category/:slug' element={<ProductsInCategoryScreen/>} />
       <Route exact path='/all-categories' element={<AllCategoriesScreen/>} />
 

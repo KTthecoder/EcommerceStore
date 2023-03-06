@@ -1,5 +1,6 @@
 .HomeSwiperSlideImgg{
     aspect-ratio: 7/5;
+    width: 100%;
     object-fit: cover;
 }
 

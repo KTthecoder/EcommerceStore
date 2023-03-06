@@ -23,14 +23,19 @@
     z-index: 0;
 }
 
+.HomeSwiperSlideLink{
+    width: 100%;
+}
+
 .HomeSwiper{
     width: 100%;
 }
 
 .HomeSwiperSlideImg{
-    max-width: 100%;
-    min-height: 70vh;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    aspect-ratio: 5/3;
 }
 
 .HomeSwiperBtnsDiv{
@@ -151,7 +156,7 @@
 
 @media(min-width: 1024px){
     .HomeSwiperSlideImg{
-        aspect-ratio: 16/5;
+        aspect-ratio: 14/5;
         height: auto;
     }
 

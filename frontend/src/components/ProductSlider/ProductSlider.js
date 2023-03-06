@@ -9,7 +9,7 @@ import './ProductSlider.css'
 import ProductInSlider from '../ProductInSlider';
 import { useNavigate } from 'react-router-dom';
 
-const ProductSlider = ({title}) => {
+const ProductSlider = ({title, data, slug}) => {
     const navigationPrevRef = useRef(null)
     const navigationNextRef = useRef(null)
     const navigation = useNavigate()
@@ -66,29 +66,16 @@ const ProductSlider = ({title}) => {
                 }}
                 modules={[Navigation, A11y]}
             >
-                <SwiperSlide>
-                    <ProductInSlider/>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <ProductInSlider/>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <ProductInSlider/>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <ProductInSlider/>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <ProductInSlider/>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <ProductInSlider/>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <ProductInSlider/>
-                </SwiperSlide>
+                {data && data.map((item) => (
+                    <SwiperSlide key={item.id}>
+                        <ProductInSlider slug={item.slug} normalPrice={item.normalPrice} img={item.frontImg} imgAlt={item.frontImgAlt} discountPrice={item.discountPrice} title={item.title} rating={item.rating} boughtBy={item.boughtBy}/>
+                    </SwiperSlide>
+                ))}      
             </Swiper>
-            <button className='ProductSliderShowMoreBtn' onClick={() => navigation('category/technology')}>Show More</button>
+            {slug ? 
+                <button className='ProductSliderShowMoreBtn' onClick={() => navigation(`category/${slug}`)}>Show More</button>
+            : ''}
+            
         </div>
     )
 }

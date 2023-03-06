@@ -4,10 +4,12 @@ import FiltersDesktop from '../../components/FiltersDesktop'
 import FiltersMobile from '../../components/FiltersMobile/FiltersMobile'
 import Footer from '../../components/Footer/Footer'
 import ProductInSlider from '../../components/ProductInSlider'
+import useFetchGet from '../../hooks/useFetchGet'
 
 const ProductsInCategoryScreen = () => {
     const [showFilters, setShowFilters] = useState(false)
     const { slug } = useParams()
+    const { data } = useFetchGet(`http://127.0.0.1:8000/api/category/${slug}`)
 
     return (
         <>
@@ -30,30 +32,17 @@ const ProductsInCategoryScreen = () => {
                                 <p>Category</p>
                                 <p>75 products</p>
                             </div>
-                            <div className='FoundProductsContainer1Toppp1'>
+                            <div className='FoundProductsContainer1Toppp1' style={{backgroundImage: `url(http://127.0.0.1:8000${data && data['categoryProducts']['frontImg']})`}}>
                                 <div className='FoundProductsContainer1Topp22'>
                                     <div className='FoundProductsContainer1Top2'>
-                                        <p className='FoundProductsContainer1TopH11'>{slug.slice(0, 1).toUpperCase() + slug.slice(1, slug.length)}</p>
+                                        <p className='FoundProductsContainer1TopH11'>{data && data['categoryProducts']['name']}</p>
                                     </div>
                                 </div>
                             </div>
                             <div className='FoundProductsContainer1Main'>
-                                <ProductInSlider/>
-                                <ProductInSlider/>
-                                <ProductInSlider/>
-                                <ProductInSlider/>
-                                <ProductInSlider/>
-                                <ProductInSlider/>
-                                <ProductInSlider/>
-                                <ProductInSlider/>
-                                <ProductInSlider/>
-                                <ProductInSlider/>      
-                                <ProductInSlider/>
-                                <ProductInSlider/>
-                                <ProductInSlider/>
-                                <ProductInSlider/>    
-                                <ProductInSlider/>
-                                <ProductInSlider/>
+                                {data && data['categoryProducts']['products'].map((item) => (
+                                    <ProductInSlider slug={item.slug} normalPrice={item.normalPrice} img={item.frontImg} imgAlt={item.frontImgAlt} discountPrice={item.discountPrice} title={item.title} rating={item.rating} boughtBy={item.boughtBy}/>
+                                ))}
                             </div>
                         </div>
                     </div>                    

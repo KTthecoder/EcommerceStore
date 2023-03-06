@@ -5,6 +5,7 @@ const CartItem = ({type}) => {
         <div className='CartContainerRightDiv'>
             <div className='CartContainerRightDivImgDiv'>
                 <div className='CartContainerRightDivImg'></div>
+                {/* <img alt={imageAlt} src={'http://127.0.0.1:8000' + image} className='CartContainerRightDivImg'/> */}
             </div>
             <div className='CartContainerRightDiv1'>
                 <h1>Suspendisse egestas nunc neque. Ut vulputate porta ligula eu interdum.</h1>

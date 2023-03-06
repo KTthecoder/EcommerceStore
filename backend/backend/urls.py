@@ -31,6 +31,9 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/register', RegisterPage, name='RegisterPage'),
+    path('api/favorite', AllFavoriteProducts, name='AllFavoriteProducts'),
+    path('api/favorite/add', AddFavoriteProducts, name='AddFavoriteProducts'),
+    path('api/favorite/delete/<int:productId>', DeleteFavoriteProducts, name='DeleteFavoriteProducts'),
 
     #categoriesApp
     path('api/all-categories', AllCategories, name='AllCategories'),
@@ -38,6 +41,7 @@ urlpatterns = [
     #mainApp
     path('api/home', HomePage, name='HomePage'),
     path('api/category/<slug:slug>', ProductsByCategory, name='ProductsByCategory'),
-    path('api/products/<str:search>', ProductsByCategory, name='ProductsByCategory'),
+    path('api/products/<str:search>', FoundProducts, name='FoundProducts'),
+    path('api/product/<slug:slug>', ProductDetails, name='ProductDetails'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

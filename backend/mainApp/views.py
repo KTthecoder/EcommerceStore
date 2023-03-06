@@ -6,6 +6,7 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from categoriesApp.models import ProductCategories
 from categoriesApp.serializers import HomeCategoriesSerializer
+import random
 
 # All Sections on HomePage
 @api_view(['GET'])
@@ -82,7 +83,7 @@ def ProductsByCategory(request, slug):
 
 # Products found using searchbar
 @api_view(['GET'])
-def ProductsByCategory(request, search):
+def FoundProducts(request, search):
     data = {
         'categories' : None,
         'foundProducts' : None,
@@ -106,5 +107,41 @@ def ProductsByCategory(request, search):
     
     data['categories'] = categoriesSerializer.data
     data['foundProducts'] = foundProductsSerializer.data
+
+    return Response(data, status=status.HTTP_200_OK)
+
+# Products Details Screen
+@api_view(['GET'])
+def ProductDetails(request, slug):
+    data = {
+        'sliderImages' : None,
+        'product' : None,
+        'seeAlso' : None
+    }
+
+    try:
+        product = ProductModel.objects.get(slug = slug)
+    except ProductModel.DoesNotExist:
+        data = {'Response' : 'Product does not exists'}
+        return Response(data, status=status.HTTP_200_OK)
+    
+    sliderImages = ProductImagesModel.objects.filter(product = product.id)
+
+    productSerializer = DetailsProductsSerializer(product, many = False)
+
+    if not sliderImages.exists:
+        data['sliderImages'] = 'No Images'
+    else:
+        sliderImagesSerializer = DetailsSliderImagesSerializer(sliderImages, many = True)
+        data['sliderImages'] = sliderImagesSerializer.data
+
+    data['product'] = productSerializer.data
+
+    seeAlsoList = list(ProductModel.objects.all())
+    # Change to 10 after fill data
+    seeAlso = random.sample(seeAlsoList, 1)
+
+    seeAlsoSerializer = HomeProductsSerializer(seeAlso, many = True)
+    data['seeAlso'] = seeAlsoSerializer.data
 
     return Response(data, status=status.HTTP_200_OK)

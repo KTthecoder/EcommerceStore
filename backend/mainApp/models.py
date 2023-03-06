@@ -16,9 +16,10 @@ class ProductModel(models.Model):
     frontImgAlt = models.CharField(max_length=250)
     title = models.CharField(max_length=350)
     normalPrice = models.DecimalField(max_digits=10, decimal_places=2)
-    discountPrice = models.DecimalField(max_digits=10, decimal_places=2)
+    discountPrice = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     rating = models.DecimalField(max_digits=3, decimal_places=1)
     description = models.TextField()
+    shortDescription = models.TextField()
     slug = models.SlugField(unique=True)
     boughtBy = models.IntegerField()
     category = models.ForeignKey(ProductCategories, related_name='products', on_delete=models.CASCADE)
@@ -33,4 +34,4 @@ class ProductImagesModel(models.Model):
     product = models.ForeignKey(ProductModel, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.product.title + " - " + self.imageAlt.url
+        return self.product.title + " - " + self.image.url

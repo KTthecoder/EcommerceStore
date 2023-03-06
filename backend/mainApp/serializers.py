@@ -23,3 +23,13 @@ class ProductsByCategoriesSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductCategories
         fields = ['id', 'frontImg', 'frontImgAlt', 'name', 'products']
+
+class DetailsSliderImagesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProductImagesModel
+        fields = ['id', 'image', 'imageAlt']
+
+class DetailsProductsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProductModel
+        fields = ['id', 'frontImg', 'frontImgAlt', 'title', 'normalPrice', 'discountPrice', 'rating', 'description', 'slug', 'boughtBy']

@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { AuthContext } from '../contexts/AuthProvider'
 
-const useFetchGet = (url) => {
+const useFetchGetAuth = (url) => {
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(true)
+    const { accessToken } = useContext(AuthContext)
 
     useEffect(() => {
       fetch(url, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization' : 'Bearer ' + accessToken
         }
       })
       .then(res => res.json())
@@ -24,4 +27,4 @@ const useFetchGet = (url) => {
     return {data, loading}
 }
 
-export default useFetchGet
+export default useFetchGetAuth

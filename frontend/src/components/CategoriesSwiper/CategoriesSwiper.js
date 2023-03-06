@@ -8,7 +8,7 @@ import 'swiper/css/scrollbar';
 import './CategoriesSwiper.css'
 import { Link, useNavigate } from 'react-router-dom';
 
-const CategoriesSwiper = () => {
+const CategoriesSwiper = ({data}) => {
     const navigationPrevRef = useRef(null)
     const navigationNextRef = useRef(null)
     const navigation = useNavigate()
@@ -66,56 +66,14 @@ const CategoriesSwiper = () => {
                 }}
                 modules={[Navigation, A11y]}
             >
-                <SwiperSlide>
-                    <Link to={'/category/technology'} className='CategorySwiperSlide'>
-                        <p>Technology</p>
-                    </Link>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Link to={'/category/groceries'} className='CategorySwiperSlide'>
-                        <p>Groceries</p>
-                    </Link>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Link to={'/category/clothes'} className='CategorySwiperSlide'>
-                        <p>Clothes</p>
-                    </Link>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Link to={'/category/home'} className='CategorySwiperSlide'>
-                        <p>Home</p>
-                    </Link>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Link to={'/category/garden'} className='CategorySwiperSlide'>
-                        <p>Garden</p>
-                    </Link>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Link to={'/category/technology'} className='CategorySwiperSlide'>
-                        <p>Technology</p>
-                    </Link>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Link to={'/category/groceries'} className='CategorySwiperSlide'>
-                        <p>Groceries</p>
-                    </Link>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Link to={'/category/clothes'} className='CategorySwiperSlide'>
-                        <p>Clothes</p>
-                    </Link>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Link to={'/category/home'} className='CategorySwiperSlide'>
-                        <p>Home</p>
-                    </Link>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Link to={'/category/garden'} className='CategorySwiperSlide'>
-                        <p>Garden</p>
-                    </Link>
-                </SwiperSlide>
+                {data && data.map((item) => (
+                    <SwiperSlide key={item.id}>
+                        <Link to={`category/${item.slug}`} className='CategorySwiperSlide'>
+                            <p>{item.name}</p>
+                        </Link>
+                    </SwiperSlide>
+                ))}
+                
             </Swiper>
             
         </div>

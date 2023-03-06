@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
+import { useParams } from 'react-router-dom'
 import FiltersDesktop from '../../components/FiltersDesktop'
 import FiltersMobile from '../../components/FiltersMobile/FiltersMobile'
 import Footer from '../../components/Footer/Footer'
 import ProductInSlider from '../../components/ProductInSlider'
+import useFetchGet from '../../hooks/useFetchGet'
 import './FoundProductsScreen.css'
 
 const FoundProductsScreen = () => {
     const [showFilters, setShowFilters] = useState(false)
+    const { slug } = useParams()
+    const { data } = useFetchGet(`http://127.0.0.1:8000/api/products/${slug}`)
 
     return (
         <>
@@ -29,22 +33,11 @@ const FoundProductsScreen = () => {
                     <div className='FoundProductsContainer1Main1'>
                         <FiltersDesktop/>
                         <div className='FoundProductsContainer1Main'>
-                            <ProductInSlider/>
-                            <ProductInSlider/>
-                            <ProductInSlider/>
-                            <ProductInSlider/>
-                            <ProductInSlider/>
-                            <ProductInSlider/>
-                            <ProductInSlider/>
-                            <ProductInSlider/>
-                            <ProductInSlider/>
-                            <ProductInSlider/>      
-                            <ProductInSlider/>
-                            <ProductInSlider/>
-                            <ProductInSlider/>
-                            <ProductInSlider/>    
-                            <ProductInSlider/>
-                            <ProductInSlider/>
+                            {data && data['foundProducts'] == "No Products" ? 
+                                <h1>Not Found</h1>
+                            : data && data['foundProducts'].map((item) => (
+                                <ProductInSlider slug={item.slug} normalPrice={item.normalPrice} img={item.frontImg} imgAlt={item.frontImgAlt} discountPrice={item.discountPrice} title={item.title} rating={item.rating} boughtBy={item.boughtBy}/>
+                            ))}
                         </div>
                     </div>      
                 </div>

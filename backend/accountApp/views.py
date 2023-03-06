@@ -26,3 +26,49 @@ def RegisterPage(request):
     else:
         data = {'Error' : 'Bad Request'}
         return Response(data, status=status.HTTP_400_BAD_REQUEST)
+    
+@permission_classes([IsAuthenticated])
+@api_view(['GET'])
+def AllFavoriteProducts(request):
+    data = {
+        'favoriteProducts' : None
+    }
+
+    favoriteProducts = FavoriteProducts.objects.filter(user = request.user)
+
+    if not favoriteProducts.exists():
+        data['favoriteProducts'] = 'No Favorite Products'
+        return Response(data, status=status.HTTP_200_OK)
+    else:
+        favoriteProductsSerailizer = FavoriteProductSerializer(favoriteProducts, many = True)
+        data['favoriteProducts'] = favoriteProductsSerailizer.data
+        return Response(data, status=status.HTTP_200_OK)
+    
+@permission_classes([IsAuthenticated])
+@api_view(['POST'])
+def AddFavoriteProducts(request):
+    favoriteSerializer = ActionFavoriteSerializer(data = request.data)
+    if favoriteSerializer.is_valid():
+        favoriteSerializer.save()
+        data = {'Response' : 'Product Added To Favorite'}
+        return Response(data, status=status.HTTP_201_CREATED)
+    else:
+        data = {'Response' : 'Error While Adding To Favorite'}
+        return Response(data, status=status.HTTP_200_OK)
+        
+@permission_classes([IsAuthenticated])
+@api_view(['DELETE'])
+def DeleteFavoriteProducts(request, productId):
+    try:
+        favorite = FavoriteProducts.objects.get(user = 1, product = productId)
+        favorite.delete()
+
+        data = {'Response' : 'Product Deleted From Favorite Successfully'}
+        return Response(data, status=status.HTTP_200_OK)
+    except FavoriteProducts.DoesNotExist:
+        data = {'Response' : 'Product does not exists'}
+        return Response(data, status=status.HTTP_200_OK)
+    
+    
+
+    

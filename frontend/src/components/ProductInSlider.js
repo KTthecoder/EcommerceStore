@@ -3,20 +3,25 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import photo from '../static/img.webp'
 import { Link } from "react-router-dom";
 
-const ProductInSlider = () => {
+const ProductInSlider = ({slug, normalPrice, img, imgAlt, discountPrice, title, rating, boughtBy}) => {
     return (
-        <Link to={'/product/slug'} className='ProductSliderSlideLink'>
-            <img src={photo} className='ProductSliderSlideImg'/>
+        <Link to={`/product/${slug}`} className='ProductSliderSlideLink'>
+            <img src={'http://127.0.0.1:8000' + img} className='ProductSliderSlideImg' alt={imgAlt}/>
             <div className='ProductSliderSlideLinkDiv'>
-                <p className='ProductSliderSlideLinkDivPrice'>$89.78</p>
-                <p className='ProductSliderSlideLinkDivDiscountPrice'>$94.53</p>
+                {discountPrice ? 
+                    <>
+                        <p className='ProductSliderSlideLinkDivPrice'>${discountPrice}</p>
+                        <p className='ProductSliderSlideLinkDivDiscountPrice'>${normalPrice}</p>
+                    </>
+                : 
+                    <p className='ProductSliderSlideLinkDivPrice'>${normalPrice}</p>
+                }
             </div>
-            <h2 className='ProductSliderSlideLinkDivTitle'>Phasellus ac scelerisque lorem. Donec sit amet odio eget felis tincidunt consectetur.</h2>
+            <h2 className='ProductSliderSlideLinkDivTitle'>{title}</h2>
             <div className='ProductSliderStarsDiv'>
-                <p className='ProductSliderStarsDivRatings'>3.4</p>
+                <p className='ProductSliderStarsDivRatings'>{rating}</p>
                 <div className='ProductSliderStarsDiv1'>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="gold" class="ProductSliderStarIcon">
                         <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
@@ -35,7 +40,7 @@ const ProductInSlider = () => {
                     </svg>
                 </div>
             </div>
-            <p className='ProductSliderSlideLinkDivBought'>234 people bought</p>
+            <p className='ProductSliderSlideLinkDivBought'>{boughtBy} people bought</p>
         </Link>
     )
 }

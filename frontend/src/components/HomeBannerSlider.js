@@ -8,7 +8,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-const HomeBannerSlider = () => {
+const HomeBannerSlider = ({data}) => {
     const navigationPrevRef = React.useRef(null)
     const navigationNextRef = React.useRef(null)
 
@@ -34,21 +34,14 @@ const HomeBannerSlider = () => {
             }}
             modules={[Navigation, Pagination, A11y]}
             >
-            <SwiperSlide className='HomeSwiperSlide'>
-                <Link to={'/'} className='HomeSwiperSlideLink'>
-                    <img src={photo} className='HomeSwiperSlideImg'/>
-                </Link>
-            </SwiperSlide>
-            <SwiperSlide className='HomeSwiperSlide'>
-                <Link to={'/'} className='HomeSwiperSlideLink'>
-                    <img src={photo} className='HomeSwiperSlideImg'/>
-                </Link>
-            </SwiperSlide>
-            <SwiperSlide className='HomeSwiperSlide'>
-                <Link to={'/'} className='HomeSwiperSlideLink'>
-                    <img src={photo} className='HomeSwiperSlideImg'/>
-                </Link>
-            </SwiperSlide>
+                {data && data.map((item) => (
+                        <SwiperSlide className='HomeSwiperSlide' key={item.id}>
+                            <Link to={`/${item.slug}`} className='HomeSwiperSlideLink'>
+                                <img src={'http://127.0.0.1:8000' + item.frontImg} className='HomeSwiperSlideImg' alt={item.frontImgAlt}/>
+                            </Link>
+                        </SwiperSlide>
+                    ))
+                }
             <div className='HomeSwiperBtnsDiv'>
                 <button ref={navigationPrevRef}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="HomeSwiperBtnIcon">

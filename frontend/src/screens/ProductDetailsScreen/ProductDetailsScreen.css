@@ -86,7 +86,7 @@
 }
 
 .ProductDetailsContainer2HeaderH1{
-    font-size: 1.04rem;
+    font-size: 1.25rem;
     font-weight: 500;
     margin-bottom: 5px;
     line-height: 30px;
@@ -246,7 +246,7 @@
     }
 
     .ProductDetailsContainer2HeaderH1{
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
 
     .ProductDetailsContainer2PriceDis{
@@ -345,6 +345,10 @@
 
     .ProductDetailsContainer4{
         width: 85%;
+    }
+
+    .ProductDetailsContainer2HeaderH1{
+        font-size: 1.6rem;
     }
 }
 
