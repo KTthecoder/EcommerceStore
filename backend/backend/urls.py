@@ -24,6 +24,7 @@ from rest_framework_simplejwt.views import (
 from accountApp.views import *
 from categoriesApp.views import *
 from mainApp.views import *
+from cartApp.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -43,5 +44,8 @@ urlpatterns = [
     path('api/category/<slug:slug>', ProductsByCategory, name='ProductsByCategory'),
     path('api/products/<str:search>', FoundProducts, name='FoundProducts'),
     path('api/product/<slug:slug>', ProductDetails, name='ProductDetails'),
+
+    #cartApp
+    path('api/cart', CartPage, name='CartPage'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

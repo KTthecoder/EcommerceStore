@@ -1,15 +1,15 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const CartItem = ({type}) => {
+const CartItem = ({type, title, image, imageAlt, quantity, shortDescription, normalPrice, discountPrice, slug}) => {
     return (
         <div className='CartContainerRightDiv'>
             <div className='CartContainerRightDivImgDiv'>
-                <div className='CartContainerRightDivImg'></div>
-                {/* <img alt={imageAlt} src={'http://127.0.0.1:8000' + image} className='CartContainerRightDivImg'/> */}
+                <img alt={imageAlt} src={'http://127.0.0.1:8000' + image} className='CartContainerRightDivImg'/>
             </div>
             <div className='CartContainerRightDiv1'>
-                <h1>Suspendisse egestas nunc neque. Ut vulputate porta ligula eu interdum.</h1>
-                <p className='CartContainerRightDiv1P'>Suspendisse mauris ipsum, tempus a pretium scelerisque, porttitor a justo. Integer quis porta ex.</p>
+                <Link to={`/product/${slug}`}><h1>{title}</h1></Link>
+                <p className='CartContainerRightDiv1P'>{shortDescription}</p>
                 <div className='CartContainerRightDivInfo'>
                     {!type ? 
                     <>
@@ -19,7 +19,7 @@ const CartItem = ({type}) => {
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
                                 </svg>
                             </button>
-                            <p className='CartContainerRightDiv1QuantityP'>1</p>
+                            <p className='CartContainerRightDiv1QuantityP'>{quantity}</p>
                             <button className='CartContainerRightDiv1QuantityBtn'>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="CartContainerRightDiv1QuantityBtnIcon">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -29,8 +29,12 @@ const CartItem = ({type}) => {
                     </>
                     : <p className='CartContainerRightDiv1QuantityP1'>Quantity: 1</p>}
                     <div className='CartContainerRightDiv1PriceDiv'>
-                        <p className='CartContainerRightDiv1PriceDis'>$38.93</p>
-                        <p className='CartContainerRightDiv1Price'>$41.72</p>
+                        {discountPrice ? 
+                        <>
+                            <p className='CartContainerRightDiv1PriceDis'>${discountPrice}</p>
+                            <p className='CartContainerRightDiv1Price'>${normalPrice}</p>
+                        </>    
+                        : <p className='CartContainerRightDiv1PriceDis'>${normalPrice}</p>}
                     </div>
                 </div>
             </div>

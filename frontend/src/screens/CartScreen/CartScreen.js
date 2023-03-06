@@ -4,9 +4,11 @@ import CartItem from '../../components/CartItem'
 import CheckoutTour from '../../components/CheckoutTour'
 import { useNavigate } from 'react-router-dom'
 import Footer from '../../components/Footer/Footer'
+import useFetchGetAuth from '../../hooks/useFetchGetAuth'
 
 const CartScreen = () => {
     const navigation = useNavigate()
+    const { data } = useFetchGetAuth('http://127.0.0.1:8000/api/cart')
 
     return (
         <>
@@ -25,18 +27,17 @@ const CartScreen = () => {
                         </div>
                         <div className='CartContainerRight'>
                             <p className='CartContainerRightName'>Package from Name of Company</p>
-                            <CartItem/>
-                            <CartItem/>
-                            <p className='CartContainerRightName'>Package from Name of Company</p>
-                            <CartItem/>
-                            <CartItem/>
-                            <CartItem/>
+                            {data && data['Response'] != 'Your Shopping Cart is Empty' ? 
+                                data && data['order'].map((item) => (
+                                    <CartItem key={item.product.id} shortDescription={item.product.shortDescription} quantity={item.quantity} productId={item.product.id} image={item.product.frontImg} title={item.product.title} imageAlt={item.product.frontImgAlt} normalPrice={item.product.normalPrice} discountPrice={item.product.discountPrice} slug={item.product.slug}/>
+                                )) 
+                            : <h1>Shopping Cart Is Empty</h1>}
                         </div>
                     </div>
                     <div className='CartContainerRightMain'>
                         <div className='CartContainerRightMainDiv'>
                             <h3>Subtotal</h3>
-                            <p>$67.98</p>
+                            <p>${data && data['order'][0]['order']['order_total']}</p>
                         </div>
                         <div className='CartContainerRightMainDiv'>
                             <h3>Shipping</h3>
@@ -44,7 +45,7 @@ const CartScreen = () => {
                         </div>
                         <div className='CartContainerRightMainDiv'>
                             <h3>Total</h3>
-                            <p>$67.98</p>
+                            <p>${data && data['order'][0]['order']['order_total']}</p>
                         </div>
                         <button className='CartContainerRightMainDivBtn' onClick={() => navigation('/shipping-info')}>Go To Checkout</button>
                     </div>

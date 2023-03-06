@@ -379,6 +379,10 @@
     .CartContainer{
         margin-top: 105px;
     }
+
+    .CartContainerRightDiv1 h1{
+        font-size: 1.2rem;
+    }
 }
 
 @media(min-width: 880px){
@@ -437,6 +441,10 @@
     }
 
     .CartContainerRightMainDiv p{
+        font-size: 1.3rem;
+    }
+
+    .CartContainerRightDiv1 h1{
         font-size: 1.3rem;
     }
 }
