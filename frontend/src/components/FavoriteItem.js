@@ -1,9 +1,8 @@
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Link } from "react-router-dom";
 import { AuthContext } from '../contexts/AuthProvider';
 
-const FavoriteItem = ({image, imageAlt, title, shortDescription, normalPrice, discountPrice, slug, productId}) => {
+const FavoriteItem = ({image, setReload, reload, imageAlt, title, shortDescription, normalPrice, discountPrice, slug, productId}) => {
     const navigation = useNavigate()
     const { accessToken } = useContext(AuthContext)
 
@@ -17,7 +16,7 @@ const FavoriteItem = ({image, imageAlt, title, shortDescription, normalPrice, di
         })
         .then(res => res.json())
         .then((data) => {
-            window.location.reload()
+            setReload(!reload)
         })
         .catch(err => {
             console.log(err.message)

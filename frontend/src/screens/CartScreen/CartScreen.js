@@ -8,7 +8,7 @@ import useFetchGetAuth from '../../hooks/useFetchGetAuth'
 
 const CartScreen = () => {
     const navigation = useNavigate()
-    const { data } = useFetchGetAuth('http://127.0.0.1:8000/api/cart')
+    const { data, setReload, reload } = useFetchGetAuth('http://127.0.0.1:8000/api/cart')
 
     return (
         <>
@@ -29,7 +29,7 @@ const CartScreen = () => {
                             <p className='CartContainerRightName'>Package from Name of Company</p>
                             {data && data['Response'] != 'Your Shopping Cart is Empty' ? 
                                 data && data['order'].map((item) => (
-                                    <CartItem key={item.product.id} shortDescription={item.product.shortDescription} quantity={item.quantity} productId={item.product.id} image={item.product.frontImg} title={item.product.title} imageAlt={item.product.frontImgAlt} normalPrice={item.product.normalPrice} discountPrice={item.product.discountPrice} slug={item.product.slug}/>
+                                    <CartItem reload={reload} setReload={setReload} key={item.product.id} orderItemId={item.id} shortDescription={item.product.shortDescription} quantity={item.quantity} productId={item.product.id} image={item.product.frontImg} title={item.product.title} imageAlt={item.product.frontImgAlt} normalPrice={item.product.normalPrice} discountPrice={item.product.discountPrice} slug={item.product.slug}/>
                                 )) 
                             : <h1>Shopping Cart Is Empty</h1>}
                         </div>

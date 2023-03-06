@@ -1,19 +1,22 @@
 import React from 'react'
 import photo from '../static/img.webp'
 
-const CheckoutCartItem = () => {
+const CheckoutCartItem = ({type, reload, setReload, title, image, imageAlt, quantity, shortDescription, normalPrice, discountPrice, slug, productId, orderItemId}) => {
   return (
     <div className='CartContainerRightMain1CartItem'>
-      <img src={photo} className='CartContainerRightMain1CartItemImg'/>
+      <img src={`http://127.0.0.1:8000${image}`} className='CartContainerRightMain1CartItemImg' alt={imageAlt}/>
       <div className='CartContainerRightMain1CartItemDiv'>
-          <h3 className='CartContainerRightMain1CartItemDivTitle'>Nullam odio nisi, tempus gravida elit id, hendrerit consectetur augue.</h3>
-          <div className='CartContainerRightMain1CartItemDivMore'>
-              <p className='CartContainerRightMain1CartItemDivQuantity'>Quantity: 1</p>
-              <div className='CartContainerRightMain1CartItemDiv1'>
-                  <p className='CartContainerRightMain1CartItemDivPriceDis'>$37.98</p>
-                  <p className='CartContainerRightMain1CartItemDivPrice'>$42.72</p>
-              </div>
+        <h3 className='CartContainerRightMain1CartItemDivTitle'>{title}</h3>
+        <div className='CartContainerRightMain1CartItemDivMore'>
+          <p className='CartContainerRightMain1CartItemDivQuantity'>Quantity: {quantity}</p>
+          <div className='CartContainerRightMain1CartItemDiv1'>
+            {discountPrice ? 
+            <>
+              <p className='CartContainerRightMain1CartItemDivPriceDis'>${discountPrice}</p>
+              <p className='CartContainerRightMain1CartItemDivPrice'>${normalPrice}</p>
+            </> : <p className='CartContainerRightMain1CartItemDivPriceDis'>${normalPrice}</p>}
           </div>
+        </div>
       </div>
     </div>
   )

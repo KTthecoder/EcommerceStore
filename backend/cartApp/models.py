@@ -37,11 +37,9 @@ class ShippingAddressModel(models.Model):
     name = models.CharField(max_length=150, blank=False, null=True)
     lastName = models.CharField(max_length=150, blank=False, null=True)
     address = models.CharField(max_length=200, blank=False, null=True)
-    email = models.EmailField(blank=False, null=True)
-    phoneNr = models.CharField(max_length=9, blank=False, null=True)
     city = models.CharField(max_length=200, blank=False, null=True)
     zipcode = models.CharField(max_length=200, blank=False, null=True)
     order = models.ForeignKey(OrderModel, null=True, blank=True, related_name='shippingAddress', on_delete=models.CASCADE)
    
     def __str__(self):
-        return self.name + " " + self.lastName
+        return str(self.name) + " " + str(self.lastName)

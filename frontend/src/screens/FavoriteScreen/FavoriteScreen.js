@@ -1,15 +1,11 @@
 import React from 'react'
 import './FavoriteScreen.css'
-import CartItem from '../../components/CartItem'
-import CheckoutTour from '../../components/CheckoutTour'
-import { useNavigate } from 'react-router-dom'
 import FavoriteItem from '../../components/FavoriteItem'
 import Footer from '../../components/Footer/Footer'
 import useFetchGetAuth from '../../hooks/useFetchGetAuth'
 
 const FavoriteScreen = () => {
-    const navigation = useNavigate()
-    const { data } = useFetchGetAuth('http://127.0.0.1:8000/api/favorite')
+    const { data, reload, setReload } = useFetchGetAuth('http://127.0.0.1:8000/api/favorite')
 
     return (
         <>
@@ -26,7 +22,7 @@ const FavoriteScreen = () => {
                         </div>
                         <div className='CartContainerRight'>
                             {data && data['favoriteProducts'] != 'No Favorite Products' ? data && data['favoriteProducts'].map((item) => (
-                                <FavoriteItem key={item.id} productId={item.productId} image={item.frontImg} title={item.title} imageAlt={item.frontImgAlt} normalPrice={item.normalPrice} discountPrice={item.discountPrice} shortDescription={item.shortDescription} slug={item.slug}/>
+                                <FavoriteItem reload={reload} setReload={setReload} key={item.id} productId={item.productId} image={item.frontImg} title={item.title} imageAlt={item.frontImgAlt} normalPrice={item.normalPrice} discountPrice={item.discountPrice} shortDescription={item.shortDescription} slug={item.slug}/>
                             )) :  <h1>No Favorite Products</h1>}
                         </div>
                     </div>

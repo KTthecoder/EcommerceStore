@@ -4,6 +4,7 @@ import { AuthContext } from '../contexts/AuthProvider'
 import AllCategoriesScreen from '../screens/AllCategoriesScreen/AllCategoriesScreen'
 import CartScreen from '../screens/CartScreen/CartScreen'
 import ConfirmOrderScreen from '../screens/ConfirmOrderScreen/ConfirmOrderScreen'
+import EditShippingInfoScreen from '../screens/EditShippingInfoScreen/EditShippingInfoScreen'
 import FavoriteScreen from '../screens/FavoriteScreen/FavoriteScreen'
 import FoundProductsScreen from '../screens/FoundProductsScreen/FoundProductsScreen'
 import HomeScreen from '../screens/HomeScreen/HomeScreen'
@@ -37,6 +38,9 @@ function Navigation() {
       </Route>
       <Route exact path='/shipping-info' element={<PrivateRoute/>}>
         <Route exact path='/shipping-info' element={<ShippingScreen/>} />
+      </Route>
+      <Route exact path='/shipping-info/edit' element={<PrivateRoute/>}>
+        <Route exact path='/shipping-info/edit' element={<EditShippingInfoScreen/>} />
       </Route>
       <Route exact path='/payment' element={<PrivateRoute/>}>
         <Route exact path='/payment' element={<PaymentScreen/>} />

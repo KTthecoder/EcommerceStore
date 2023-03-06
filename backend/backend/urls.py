@@ -47,5 +47,12 @@ urlpatterns = [
 
     #cartApp
     path('api/cart', CartPage, name='CartPage'),
+    path('api/cart/add/<int:productId>', AddProduct, name='AddProduct'),
+    path('api/cart/remove/<int:orderItemId>', RemoveProduct, name='RemoveProduct'),
+    path('api/shipping-address', ShippingAddressScreen, name='ShippingAddressScreen'),
+    path('api/shipping-address/add', AddShippingAddress, name='AddShippingAddress'),
+    path('api/shipping-address/edit/<int:orderId>', EditShippingAddress, name='EditShippingAddress'),
+    
+    path('api/payment', PaymentPage, name='PaymentPage'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

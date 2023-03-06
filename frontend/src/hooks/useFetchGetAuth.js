@@ -4,6 +4,7 @@ import { AuthContext } from '../contexts/AuthProvider'
 const useFetchGetAuth = (url) => {
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [reload, setReload] = useState(false)
     const { accessToken } = useContext(AuthContext)
 
     useEffect(() => {
@@ -22,9 +23,9 @@ const useFetchGetAuth = (url) => {
       .catch(err => {
         console.log(err.message)
       })
-    }, [url])
+    }, [url, reload])
 
-    return {data, loading}
+    return {data, loading, setReload, reload}
 }
 
 export default useFetchGetAuth

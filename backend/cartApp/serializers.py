@@ -27,3 +27,8 @@ class CartOrderItemSerializer(serializers.ModelSerializer):
 
     def get_item_total(self, orderItem):
         return orderItem.item_total
+    
+class CartShippingAddressSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ShippingAddressModel
+        fields = '__all__'

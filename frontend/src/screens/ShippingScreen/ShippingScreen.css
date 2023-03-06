@@ -175,10 +175,13 @@
     .CartContainerRightMain1CartItemImg{
         height: 120px;
         width: 180px;
+        background-color: red;
+        object-fit: cover;
+        width: 35%;
     }
 
     .CartContainerRightMain1CartItemDiv{
-        width: 100%;
+        flex-grow: 1;
         margin-left: 25px;
     }
 
@@ -212,8 +215,9 @@
 
 @media(min-width: 1024px){
     .CartContainerRightMain1CartItemImg{
-        width: 100px;
-        height: 80px;
+        width: 110px;
+        height: 85px;
+        object-fit: cover;
     }
 
     .CartContainerRightMain1CartItemDivTitle{
