@@ -161,3 +161,30 @@ def PaymentPage(request):
     orderItemSerializer = CartOrderItemSerializer(orderItems, many = True)
     data['order'] = orderItemSerializer.data
     return Response(data, status=status.HTTP_200_OK)
+
+@permission_classes([IsAuthenticated])
+@api_view(['GET'])
+def OrderInfo(request, orderId):
+    data = {
+        'ShippingInfo' : None,
+        'order' : None
+    }
+
+    user = request.user
+    order = OrderModel.objects.get(user = user, ordered = True, id = orderId)
+    orderItems = OrderItemModel.objects.filter(order = order)
+
+    try:
+        shippingInfo = ShippingAddressModel.objects.get(order = order)
+        shippingInfoSerializer = CartShippingAddressSerializer(shippingInfo, many = False)
+        data['ShippingInfo'] = shippingInfoSerializer.data
+    except ShippingAddressModel.DoesNotExist:
+        data['ShippingInfo'] = 'No Shipping Info'
+
+    if not orderItems.exists():
+        data = {'Response' : 'Your Shopping Cart is Empty'}
+        return Response(data, status=status.HTTP_200_OK)
+
+    orderItemSerializer = CartOrderItemSerializer(orderItems, many = True)
+    data['order'] = orderItemSerializer.data
+    return Response(data, status=status.HTTP_200_OK)

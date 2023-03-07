@@ -30,7 +30,10 @@ const ProductsInCategoryScreen = () => {
                         <div className='FoundProductsContainer1Main11'>
                             <div className='FoundProductsContainer1Top1'>
                                 <p>Category</p>
-                                <p>75 products</p>
+                                {/* <p>75 products</p> */}
+                                {data && data['categoryProducts'] == "No Products" ? 
+                                <p>0 products</p>
+                                : <p>{data && data['categoryProducts']['products'].length} products</p>}
                             </div>
                             <div className='FoundProductsContainer1Toppp1' style={{backgroundImage: `url(http://127.0.0.1:8000${data && data['categoryProducts']['frontImg']})`}}>
                                 <div className='FoundProductsContainer1Topp22'>

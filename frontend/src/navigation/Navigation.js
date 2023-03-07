@@ -9,6 +9,7 @@ import FavoriteScreen from '../screens/FavoriteScreen/FavoriteScreen'
 import FoundProductsScreen from '../screens/FoundProductsScreen/FoundProductsScreen'
 import HomeScreen from '../screens/HomeScreen/HomeScreen'
 import LoginScreen from '../screens/LoginScreen/LoginScreen'
+import OrderInfoScreen from '../screens/OrderInfoScreen/OrderInfoScreen'
 import PaymentScreen from '../screens/PaymentScreen/PaymentScreen'
 import ProductDetailsScreen from '../screens/ProductDetailsScreen/ProductDetailsScreen'
 import ProductsInCategoryScreen from '../screens/ProductsInCategoryScreen/ProductsInCategoryScreen'
@@ -58,6 +59,9 @@ function Navigation() {
       </Route>
       <Route exact path='/settings' element={<PrivateRoute/>}>
         <Route exact path='/settings' element={<ProfileSettingsScreen/>} />
+      </Route>
+      <Route exact path='/order/:orderId' element={<PrivateRoute/>}>
+        <Route exact path='/order/:orderId' element={<OrderInfoScreen/>} />
       </Route>
     </Routes>
   )

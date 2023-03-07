@@ -118,6 +118,38 @@ const CheckoutTour = ({type}) => {
                 <p className='CartStatusBarPFinished'>Confirm</p>
             </>
             : null}
+
+            {type == 'finish' ? 
+            <>
+                <div className='CartStatusBarCircleFinished'>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="CartStatusBarCircleIcon">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                </div>
+                <p className='CartStatusBarPFinished'>Cart</p>
+                <div className='CartStatusBarDashFinished'></div>
+                <div className='CartStatusBarCircleFinished'>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="CartStatusBarCircleIcon">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                </div>
+                <p className='CartStatusBarPFinished'>Shipping Info</p>
+                <div className='CartStatusBarDashFinished'></div>
+                <div className='CartStatusBarCircleFinished'>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="CartStatusBarCircleIcon">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                </div>
+                <p className='CartStatusBarPFinished'>Payment</p>
+                <div className='CartStatusBarDashFinished'></div>
+                <div className='CartStatusBarCircleFinished'>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="CartStatusBarCircleIcon">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                </div>
+                <p className='CartStatusBarPFinished'>Confirmed</p>
+            </>
+            : null}
             
         </div>
     )

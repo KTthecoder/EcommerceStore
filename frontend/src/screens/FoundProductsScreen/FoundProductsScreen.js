@@ -20,9 +20,11 @@ const FoundProductsScreen = () => {
                     <div className='FoundProductsContainer1Top'>
                         <div className='FoundProductsContainer1Top14'>
                             <p>Products Found</p>
-                            <p>75 products</p>
+                            {data && data['foundProducts'] == "No Products" ? 
+                                <p>0 products</p>
+                            : <p>{data && data['foundProducts'].length} products</p>}
                         </div>
-                        <p className='FoundProductsContainer1TopP'>product name</p>
+                        <p className='FoundProductsContainer1TopP'>{slug}</p>
                     </div>
                     <button className='FoundProductsContainer1Btn' onClick={() => setShowFilters(true)}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="FoundProductsContainer1BtnIcon">

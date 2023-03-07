@@ -55,6 +55,7 @@ urlpatterns = [
     path('api/shipping-address/add', AddShippingAddress, name='AddShippingAddress'),
     path('api/shipping-address/edit/<int:orderId>', EditShippingAddress, name='EditShippingAddress'),
     path('api/order/remove/<int:orderId>', RemoveOrder, name='RemoveOrder'),
+    path('api/order/<int:orderId>', OrderInfo, name='OrderInfo'),
 
     path('api/payment', PaymentPage, name='PaymentPage'),
 ]
