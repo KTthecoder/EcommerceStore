@@ -45,6 +45,7 @@ urlpatterns = [
     path('api/category/<slug:slug>', ProductsByCategory, name='ProductsByCategory'),
     path('api/products/<str:search>', FoundProducts, name='FoundProducts'),
     path('api/product/<slug:slug>', ProductDetails, name='ProductDetails'),
+    path('api/store/<slug:slug>', ProductsByStore, name='ProductsByStore'),
 
     #cartApp
     path('api/cart', CartPage, name='CartPage'),

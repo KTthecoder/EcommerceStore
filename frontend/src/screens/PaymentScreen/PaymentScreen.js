@@ -8,7 +8,7 @@ import './PaymentScreen.css'
 
 const PaymentScreen = () => {
     const navigation = useNavigate()
-    const { data } = useFetchGetAuth('http://127.0.0.1:8000/api/orders')
+    const { data } = useFetchGetAuth('http://127.0.0.1:8000/api/payment')
 
     return (
         <>
@@ -25,10 +25,12 @@ const PaymentScreen = () => {
                             </div>
                         </div>
                         <div className='CartContainerRight'>
-                            <p className='CartContainerRightName'>Package from Name of Company</p>
                             {data && data['Response'] != 'Your Shopping Cart is Empty' ? 
                                 data && data['order'].map((item) => (
-                                    <CartItem type={true} key={item.product.id} orderItemId={item.id} shortDescription={item.product.shortDescription} quantity={item.quantity} productId={item.product.id} image={item.product.frontImg} title={item.product.title} imageAlt={item.product.frontImgAlt} normalPrice={item.product.normalPrice} discountPrice={item.product.discountPrice} slug={item.product.slug}/>
+                                    <>
+                                        <p className='CartContainerRightName'>Package from {item['product']['store']['name']}</p>
+                                        <CartItem type={true} key={item.product.id} orderItemId={item.id} shortDescription={item.product.shortDescription} quantity={item.quantity} productId={item.product.id} image={item.product.frontImg} title={item.product.title} imageAlt={item.product.frontImgAlt} normalPrice={item.product.normalPrice} discountPrice={item.product.discountPrice} slug={item.product.slug}/>
+                                    </>
                                 )) 
                             : <h1>Shopping Cart Is Empty</h1>}
                         </div>

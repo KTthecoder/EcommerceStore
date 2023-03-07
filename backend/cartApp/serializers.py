@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import *
+from mainApp.serializers import StoreModelSerializer
 
 class CartOrderSerializer(serializers.ModelSerializer):
     order_total = serializers.SerializerMethodField('get_order_total')
@@ -12,9 +13,10 @@ class CartOrderSerializer(serializers.ModelSerializer):
         return order.order_total
     
 class CartProductsSerializer(serializers.ModelSerializer):
+    store = StoreModelSerializer(many = False, read_only = True)
     class Meta:
         model = ProductModel
-        fields = ['id', 'frontImg', 'frontImgAlt', 'title', 'normalPrice', 'discountPrice', 'rating', 'slug', 'boughtBy', 'shortDescription']
+        fields = ['id', 'frontImg', 'frontImgAlt', 'title', 'normalPrice', 'discountPrice', 'rating', 'slug', 'boughtBy', 'shortDescription', 'store']
 
 class CartOrderItemSerializer(serializers.ModelSerializer):
     product = CartProductsSerializer(many = False, read_only = True)

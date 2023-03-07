@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 class StoreModel(models.Model):
     name = models.CharField(max_length=200)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    slug = models.SlugField(unique=True)
     storeBanner = ResizedImageField(force_format="WEBP", quality=80, upload_to="storeBanner/")
     storeBannerAlt = models.CharField(max_length=250)
 

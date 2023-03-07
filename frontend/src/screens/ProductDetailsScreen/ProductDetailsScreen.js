@@ -5,7 +5,7 @@ import './ProductDetailsScreen.css'
 import photo from '../../static/img.webp'
 import Footer from '../../components/Footer/Footer'
 import useFetchGet from '../../hooks/useFetchGet'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const ProductDetailsScreen = () => {
@@ -102,7 +102,6 @@ const ProductDetailsScreen = () => {
                     <p className='ProductDetailsContainer2Price'>${data && data['product']['normalPrice']}</p>
                   </>
                 :<p className='ProductDetailsContainer2PriceDis'>${data && data['product']['normalPrice']}</p>}
-                
               </div>
               <div className='ProductDetailsContainerRightDiv1QuantityDiv'>
                 <button className='ProdictContainerRightDiv1QuantityBtn' onClick={() => setQuantity(quantity - 1)}>
@@ -117,6 +116,7 @@ const ProductDetailsScreen = () => {
                   </svg>
                 </button>    
               </div>
+              {data && <Link className='styleLink' to={`/store/${data['product']['store']['slug']}`}>Visit Store</Link>}
               <div className='ProductDetailsContainerBott1'>
                 <div className='ProductDetailsContainerBot1'>
                   <button className='ProductDetailsContainerBotFavorite' onClick={() => AddToFavorite()}>
@@ -129,6 +129,7 @@ const ProductDetailsScreen = () => {
                   </button>
                 </div>
               </div>  
+              {data && <Link className='styleLink1' to={`/store/${data['product']['store']['slug']}`}>Visit Store</Link>}
             </div>
           </div>
         </div>

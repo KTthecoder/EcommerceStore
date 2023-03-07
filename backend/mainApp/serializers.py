@@ -29,7 +29,13 @@ class DetailsSliderImagesSerializer(serializers.ModelSerializer):
         model = ProductImagesModel
         fields = ['id', 'image', 'imageAlt']
 
+class StoreModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = StoreModel
+        fields = ['id', 'name', 'user', 'slug', 'storeBanner', 'storeBannerAlt']
+
 class DetailsProductsSerializer(serializers.ModelSerializer):
+    store = StoreModelSerializer(read_only = True)
     class Meta:
         model = ProductModel
-        fields = ['id', 'frontImg', 'frontImgAlt', 'title', 'normalPrice', 'discountPrice', 'rating', 'description', 'slug', 'boughtBy']
+        fields = ['id', 'frontImg', 'frontImgAlt', 'title', 'normalPrice', 'discountPrice', 'rating', 'description', 'slug', 'boughtBy', 'store']

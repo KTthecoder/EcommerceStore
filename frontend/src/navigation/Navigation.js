@@ -12,6 +12,7 @@ import LoginScreen from '../screens/LoginScreen/LoginScreen'
 import PaymentScreen from '../screens/PaymentScreen/PaymentScreen'
 import ProductDetailsScreen from '../screens/ProductDetailsScreen/ProductDetailsScreen'
 import ProductsInCategoryScreen from '../screens/ProductsInCategoryScreen/ProductsInCategoryScreen'
+import ProductsInStoreScreen from '../screens/ProductsInStoreScreen/ProductsInStoreScreen'
 import ProfileScreen from '../screens/ProfileScreen/ProfileScreen'
 import ProfileSettingsScreen from '../screens/ProfileSettingsScreen/ProfileSettingsScreen'
 import RegisterScreen from '../screens/RegisterScreen/RegisterScreen'
@@ -30,6 +31,7 @@ function Navigation() {
       <Route exact path='/search/:slug' element={<FoundProductsScreen/>} />
       <Route exact path='/search/' element={<FoundProductsScreen/>} />
       <Route exact path='/category/:slug' element={<ProductsInCategoryScreen/>} />
+      <Route exact path='/store/:slug' element={<ProductsInStoreScreen/>} />
       <Route exact path='/all-categories' element={<AllCategoriesScreen/>} />
 
       {/* With Authentication */}

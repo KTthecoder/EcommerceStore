@@ -145,3 +145,29 @@ def ProductDetails(request, slug):
     data['seeAlso'] = seeAlsoSerializer.data
 
     return Response(data, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+def ProductsByStore(request, slug):
+    data = {
+        'store' : None,
+        'storeProducts' : None,
+    }
+
+    try:
+        store = StoreModel.objects.get(slug = slug)
+    except: 
+        data['store'] = 'Store not exists'
+
+    try:
+        storeProducts = ProductModel.objects.filter(store = store.id)
+    except ProductCategories.DoesNotExist:
+        data['storeProducts'] = 'Store has no products'
+        return Response(data, status=status.HTTP_200_OK)
+    
+    storeSerializer = StoreModelSerializer(store, many = False)
+    storeProductsSerializer = HomeProductsSerializer(storeProducts, many = True)
+    
+    data['store'] = storeSerializer.data
+    data['storeProducts'] = storeProductsSerializer.data
+
+    return Response(data, status=status.HTTP_200_OK)
