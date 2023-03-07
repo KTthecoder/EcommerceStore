@@ -8,7 +8,7 @@ import './PaymentScreen.css'
 
 const PaymentScreen = () => {
     const navigation = useNavigate()
-    const { data } = useFetchGetAuth('http://127.0.0.1:8000/api/payment')
+    const { data } = useFetchGetAuth('http://127.0.0.1:8000/api/orders')
 
     return (
         <>

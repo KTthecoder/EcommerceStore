@@ -18,7 +18,7 @@ def CartPage(request):
     orderItems = OrderItemModel.objects.filter(order = order)
 
     if not orderItems.exists():
-        data = {'Response' : 'Your Shopping Cart is Empty'}
+        data['order'] = 'Your Shopping Cart is Empty'
         return Response(data, status=status.HTTP_200_OK)
 
     orderItemSerializer = CartOrderItemSerializer(orderItems, many = True)
@@ -27,7 +27,7 @@ def CartPage(request):
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def AddProduct(request, productId):
+def AddProduct(request, productId, quantity):
     try:
         product = ProductModel.objects.get(id = productId)
     except ProductModel.DoesNotExist:
@@ -38,7 +38,7 @@ def AddProduct(request, productId):
     order, created = OrderModel.objects.get_or_create(user=user, ordered=False) 
 
     orderItem, created = OrderItemModel.objects.get_or_create(product=product, order=order)
-    orderItem.quantity = (orderItem.quantity + 1)
+    orderItem.quantity = (orderItem.quantity + quantity)
     orderItem.save()
 
     data = {'Response' : 'Product Added Successfully'}
@@ -60,6 +60,21 @@ def RemoveProduct(request, orderItemId):
         orderItem.delete()
 
     data = {'Response' : 'Product Deleted Succesfully'}
+    return Response(data, status=status.HTTP_200_OK)
+
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def RemoveOrder(request, orderId):
+    try:
+        orderItem = OrderModel.objects.get(id = orderId)
+    except OrderItemModel.DoesNotExist:
+        data = {'Error' : 'OrderItem Does Not Exists'}
+        return Response(data)
+
+    orderItem.delete()
+    orderItem.save()
+
+    data = {'Response' : 'Order Deleted Succesfully'}
     return Response(data, status=status.HTTP_200_OK)
 
 @permission_classes([IsAuthenticated])

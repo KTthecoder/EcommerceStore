@@ -1,14 +1,33 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './CartScreen.css'
 import CartItem from '../../components/CartItem'
 import CheckoutTour from '../../components/CheckoutTour'
 import { useNavigate } from 'react-router-dom'
 import Footer from '../../components/Footer/Footer'
 import useFetchGetAuth from '../../hooks/useFetchGetAuth'
+import { AuthContext } from '../../contexts/AuthProvider'
 
 const CartScreen = () => {
     const navigation = useNavigate()
     const { data, setReload, reload } = useFetchGetAuth('http://127.0.0.1:8000/api/cart')
+    const { accessToken } = useContext(AuthContext)
+
+    const DeleteOrder = () => {
+        fetch(`http://127.0.0.1:8000/api/order/remove/${data['order'][0]['order']['id']}`, {
+        method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization' : 'Bearer ' + accessToken
+            },
+        })
+        .then(res => res.json())
+        .then((data) => {
+            setReload(!reload)
+        })
+        .catch(err => {
+            console.log(err.message)
+        })
+    }
 
     return (
         <>
@@ -23,11 +42,11 @@ const CartScreen = () => {
                                 </svg>
                                 <h1>Your Cart</h1>
                             </div>
-                            <button className='CartHeaderRemoveAllBtn'>Remove All</button>
+                            <button className='CartHeaderRemoveAllBtn' onClick={() => DeleteOrder()}>Remove All</button>
                         </div>
                         <div className='CartContainerRight'>
                             <p className='CartContainerRightName'>Package from Name of Company</p>
-                            {data && data['Response'] != 'Your Shopping Cart is Empty' ? 
+                            {data && data['order'] != 'Your Shopping Cart is Empty' ? 
                                 data && data['order'].map((item) => (
                                     <CartItem reload={reload} setReload={setReload} key={item.product.id} orderItemId={item.id} shortDescription={item.product.shortDescription} quantity={item.quantity} productId={item.product.id} image={item.product.frontImg} title={item.product.title} imageAlt={item.product.frontImgAlt} normalPrice={item.product.normalPrice} discountPrice={item.product.discountPrice} slug={item.product.slug}/>
                                 )) 
@@ -37,7 +56,7 @@ const CartScreen = () => {
                     <div className='CartContainerRightMain'>
                         <div className='CartContainerRightMainDiv'>
                             <h3>Subtotal</h3>
-                            <p>${data && data['order'][0]['order']['order_total']}</p>
+                            <p>${data && data['order'] != 'Your Shopping Cart is Empty' ? data['order'][0]['order']['order_total'] : 0}</p>
                         </div>
                         <div className='CartContainerRightMainDiv'>
                             <h3>Shipping</h3>
@@ -45,9 +64,12 @@ const CartScreen = () => {
                         </div>
                         <div className='CartContainerRightMainDiv'>
                             <h3>Total</h3>
-                            <p>${data && data['order'][0]['order']['order_total']}</p>
+                            <p>${data && data['order'] != 'Your Shopping Cart is Empty' ? data['order'][0]['order']['order_total'] : 0}</p>
                         </div>
-                        <button className='CartContainerRightMainDivBtn' onClick={() => navigation('/shipping-info')}>Go To Checkout</button>
+                        {data && data['order'] != 'Your Shopping Cart is Empty' ? 
+                            <button className='CartContainerRightMainDivBtn' onClick={() => navigation('/shipping-info')}>Go To Checkout</button>
+                        : <button className='CartContainerRightMainDivBtn' onClick={() => navigation('/')}>Add Products</button>}
+                        
                     </div>
                 </div>
             </div>

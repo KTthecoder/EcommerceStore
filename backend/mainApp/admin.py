@@ -5,3 +5,4 @@ from .models import *
 admin.site.register(BannersModel)
 admin.site.register(ProductModel)
 admin.site.register(ProductImagesModel)
+admin.site.register(StoreModel)

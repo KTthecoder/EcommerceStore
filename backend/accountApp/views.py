@@ -4,6 +4,8 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
+from cartApp.models import OrderModel
+from cartApp.serializers import CartOrderSerializer
 
 # Create your views here.
 @api_view(['POST'])
@@ -69,6 +71,21 @@ def DeleteFavoriteProducts(request, productId):
         data = {'Response' : 'Product does not exists'}
         return Response(data, status=status.HTTP_200_OK)
     
-    
+@permission_classes([IsAuthenticated])
+@api_view(['GET'])
+def MyOrders(request):
+    data = {
+        'orders' : None
+    }
+
+    orders = OrderModel.objects.filter(user = request.user, ordered = True)
+
+    if not orders.exists():
+        data['orders'] = 'No Orders'
+        return Response(data, status=status.HTTP_200_OK)
+    else:
+        ordersSerializer = CartOrderSerializer(orders, many = True)
+        data['orders'] = ordersSerializer.data
+        return Response(data, status=status.HTTP_200_OK)  
 
     

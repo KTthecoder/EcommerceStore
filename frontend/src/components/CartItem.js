@@ -1,12 +1,13 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../contexts/AuthProvider'
 
 const CartItem = ({type, reload, setReload, title, image, imageAlt, quantity, shortDescription, normalPrice, discountPrice, slug, productId, orderItemId}) => {
     const { accessToken } = useContext(AuthContext)
+    const [ productQuantity, setProductQuantity ] = useState(1)
 
     const AddToCart = () => {
-        fetch(`http://127.0.0.1:8000/api/cart/add/${productId}`, {
+        fetch(`http://127.0.0.1:8000/api/cart/add/${productId}/${productQuantity}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -64,7 +65,7 @@ const CartItem = ({type, reload, setReload, title, image, imageAlt, quantity, sh
                             </button>    
                         </div>
                     </>
-                    : <p className='CartContainerRightDiv1QuantityP1'>Quantity: 1</p>}
+                    : <p className='CartContainerRightDiv1QuantityP1'>Quantity: {productQuantity}</p>}
                     <div className='CartContainerRightDiv1PriceDiv'>
                         {discountPrice ? 
                         <>

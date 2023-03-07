@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import ProductDetailsSlider from '../../components/ProductDetailsSlider/ProductDetailsSlider'
 import ProductSlider from '../../components/ProductSlider/ProductSlider'
 import './ProductDetailsScreen.css'
@@ -13,6 +13,7 @@ const ProductDetailsScreen = () => {
   const { accessToken, user } = useContext(AuthContext)
   const { data } = useFetchGet(`http://127.0.0.1:8000/api/product/${slug}`)
   const navigation = useNavigate()
+  const [quantity, setQuantity] = useState(1)
   
   const AddToFavorite = () => {
     fetch(`http://127.0.0.1:8000/api/favorite/add`, {
@@ -29,6 +30,23 @@ const ProductDetailsScreen = () => {
     .then(res => res.json())
     .then((data) => {
       navigation('/favorite')
+    })
+    .catch(err => {
+      console.log(err.message)
+    })
+  }
+
+  const AddToCart = () => {
+    fetch(`http://127.0.0.1:8000/api/cart/add/${data['product']['id']}/${quantity}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization' : 'Bearer ' + accessToken
+      }
+    })
+    .then(res => res.json())
+    .then((data) => {
+      navigation('/cart')
     })
     .catch(err => {
       console.log(err.message)
@@ -87,13 +105,13 @@ const ProductDetailsScreen = () => {
                 
               </div>
               <div className='ProductDetailsContainerRightDiv1QuantityDiv'>
-                <button className='ProdictContainerRightDiv1QuantityBtn'>
+                <button className='ProdictContainerRightDiv1QuantityBtn' onClick={() => setQuantity(quantity - 1)}>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="CartContainerRightDiv1QuantityBtnIcon">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
                   </svg>
                 </button>
-                <p className='ProductContainerRightDiv1QuantityP'>1</p>
-                <button className='ProdictContainerRightDiv1QuantityBtn'>
+                <p className='ProductContainerRightDiv1QuantityP'>{quantity}</p>
+                <button className='ProdictContainerRightDiv1QuantityBtn' onClick={() => setQuantity(quantity + 1)}>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="CartContainerRightDiv1QuantityBtnIcon">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                   </svg>
@@ -106,7 +124,7 @@ const ProductDetailsScreen = () => {
                       <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
                     </svg>
                   </button>
-                  <button className='ProductDetailsContainerBotAdd'>
+                  <button className='ProductDetailsContainerBotAdd' onClick={() => AddToCart()}>
                     Add To Cart
                   </button>
                 </div>

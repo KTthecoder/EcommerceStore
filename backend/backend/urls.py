@@ -35,6 +35,7 @@ urlpatterns = [
     path('api/favorite', AllFavoriteProducts, name='AllFavoriteProducts'),
     path('api/favorite/add', AddFavoriteProducts, name='AddFavoriteProducts'),
     path('api/favorite/delete/<int:productId>', DeleteFavoriteProducts, name='DeleteFavoriteProducts'),
+    path('api/orders', MyOrders, name='MyOrders'),
 
     #categoriesApp
     path('api/all-categories', AllCategories, name='AllCategories'),
@@ -47,12 +48,13 @@ urlpatterns = [
 
     #cartApp
     path('api/cart', CartPage, name='CartPage'),
-    path('api/cart/add/<int:productId>', AddProduct, name='AddProduct'),
+    path('api/cart/add/<int:productId>/<int:quantity>', AddProduct, name='AddProduct'),
     path('api/cart/remove/<int:orderItemId>', RemoveProduct, name='RemoveProduct'),
     path('api/shipping-address', ShippingAddressScreen, name='ShippingAddressScreen'),
     path('api/shipping-address/add', AddShippingAddress, name='AddShippingAddress'),
     path('api/shipping-address/edit/<int:orderId>', EditShippingAddress, name='EditShippingAddress'),
-    
+    path('api/order/remove/<int:orderId>', RemoveOrder, name='RemoveOrder'),
+
     path('api/payment', PaymentPage, name='PaymentPage'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

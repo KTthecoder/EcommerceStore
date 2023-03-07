@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from .models import FavoriteProducts
+from cartApp.models import OrderModel
 
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
@@ -58,3 +59,4 @@ class ActionFavoriteSerializer(serializers.ModelSerializer):
     class Meta:
         model = FavoriteProducts
         fields = '__all__'
+
