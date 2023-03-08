@@ -20,14 +20,12 @@ const HomeScreen = () => {
                         {data && <ProductSliderSmall title={data['technologyProducts']['name']} data={data['technologyProducts']['products']} slug={data['technologyProducts']['slug']}/>}
                         {data && <ProductSliderSmall title={data['clothesProducts']['name']} data={data['clothesProducts']['products']} slug={data['clothesProducts']['slug']}/>}
                     </div>
-                    {data && <ProductSlider title={data['technologyProducts']['name']} data={data['technologyProducts']['products']} slug={data['technologyProducts']['slug']}/>}
-                    {data && <ProductSlider title={data['technologyProducts']['name']} data={data['technologyProducts']['products']} slug={data['technologyProducts']['slug']}/>}
-                    {data && <ProductSlider title={data['technologyProducts']['name']} data={data['technologyProducts']['products']} slug={data['technologyProducts']['slug']}/>}
-                    {/* <ProductSlider title={'Bestsellers'}/>
-                    <ProductSlider title={'Clothes'}/> */}
+                    {data && <ProductSlider title={'Newest Products'} data={data['newestProducts']} slug={'newest-products'}/>}
+                    {data && <ProductSlider title={'Bestsellers'} data={data['bestsellersProducts']} slug={'bestsellers'}/>}
+                    {data && <ProductSlider title={data['sportProducts']['name']} data={data['sportProducts']['products']} slug={data['sportProducts']['slug']}/>}
                 </div>
             </div>
-            <Footer/>
+            {data && <Footer/>}
         </>
     )
 }

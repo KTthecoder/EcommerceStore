@@ -44,7 +44,7 @@ const FoundProductsScreen = () => {
                     </div>      
                 </div>
             </div>
-            <Footer/>
+            {data && <Footer/>}
         </>
     )
 }

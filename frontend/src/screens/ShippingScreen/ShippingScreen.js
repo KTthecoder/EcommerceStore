@@ -181,7 +181,7 @@ const ShippingScreen = () => {
                     </div>
                 </div>
             </div>
-            <Footer/>
+            {data && <Footer/>}
         </>
     )
 }

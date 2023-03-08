@@ -16,8 +16,6 @@ class ProductCategories(models.Model):
 class ProductSubCategories(models.Model):
     name = models.CharField(max_length=70)
     slug = models.SlugField(unique=True)
-    frontImg = ResizedImageField(force_format="WEBP", quality=80, upload_to="categoryFrontImage/")
-    frontImgAlt = models.CharField(max_length=150)
     productCategory = models.ForeignKey(ProductCategories, related_name='subcategories', on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):

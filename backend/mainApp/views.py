@@ -14,12 +14,17 @@ def HomePage(request):
     data = {
         'banners' : None,
         'categories' : None,
+        'newestProducts' : None,
         'technologyProducts' : None,
         'clothesProducts' : None,
+        'sportProducts' : None,
+        'bestsellersProducts' : None,
     }
 
     banners = BannersModel.objects.all()
     categories = ProductCategories.objects.all()
+    newestProducts = ProductModel.objects.all().order_by('-id')[:10]
+    bestsellersProducts = ProductModel.objects.all().order_by('boughtBy')[:10]
 
     try:
         technologyProducts = ProductCategories.objects.get(name = 'Technology')
@@ -32,6 +37,12 @@ def HomePage(request):
     except ProductCategories.DoesNotExist:
         data = {'Response' : 'This category does not exists'}
         return Response(data, status=status.HTTP_200_OK)
+    
+    try:
+        sportProducts = ProductCategories.objects.get(name = 'Sport')
+    except ProductCategories.DoesNotExist:
+        data = {'Response' : 'This category does not exists'}
+        return Response(data, status=status.HTTP_200_OK)
 
     if not banners.exists():
         data = {'Response' : 'No Banners'}
@@ -40,16 +51,26 @@ def HomePage(request):
     if not categories.exists():
         data = {'Response' : 'No Categories'}
         return Response(data, status=status.HTTP_200_OK)
+    
+    if not newestProducts.exists():
+        data = {'Response' : 'No Products'}
+        return Response(data, status=status.HTTP_200_OK)
 
     bannersSerializer = HomeBannerSerializer(banners, many = True)
     categoriesSerializer = HomeCategoriesSerializer(categories, many = True)
+    newestProductsSerializer = HomeProductSerializer(newestProducts, many = True)
+    bestsellersProductsSerializer = HomeProductSerializer(bestsellersProducts, many = True)
     technolgyProductsSerializer = HomeCategoriesProductSerializer(technologyProducts, many = False)
     clothesProductsSerializer = HomeCategoriesProductSerializer(clothesProducts, many = False)
+    sportProductsSerializer = HomeCategoriesProductSerializer(sportProducts, many = False)
 
     data['banners'] = bannersSerializer.data
     data['categories'] = categoriesSerializer.data
     data['technologyProducts'] = technolgyProductsSerializer.data
     data['clothesProducts'] = clothesProductsSerializer.data
+    data['sportProducts'] = sportProductsSerializer.data
+    data['newestProducts'] = newestProductsSerializer.data
+    data['bestsellersProducts'] = bestsellersProductsSerializer.data
 
     return Response(data, status=status.HTTP_200_OK)
 
@@ -139,7 +160,7 @@ def ProductDetails(request, slug):
 
     seeAlsoList = list(ProductModel.objects.all())
     # Change to 10 after fill data
-    seeAlso = random.sample(seeAlsoList, 1)
+    seeAlso = random.sample(seeAlsoList, 8)
 
     seeAlsoSerializer = HomeProductsSerializer(seeAlso, many = True)
     data['seeAlso'] = seeAlsoSerializer.data

@@ -39,7 +39,7 @@ const ProfileScreen = () => {
                     </div>
                 </div>
             </div>
-            <Footer/>
+            {data && <Footer/>}
         </>
     )
 }

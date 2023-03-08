@@ -76,7 +76,7 @@ const CartScreen = () => {
                     </div>
                 </div>
             </div>
-            <Footer/>
+            {data && <Footer/>}
         </>
     )
 }

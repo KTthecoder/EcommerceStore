@@ -28,7 +28,7 @@ const FavoriteScreen = () => {
                     </div>
                 </div>
             </div>
-            <Footer/>
+            {data && <Footer/>}
         </>
     )
 }

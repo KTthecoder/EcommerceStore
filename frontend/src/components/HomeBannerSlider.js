@@ -7,6 +7,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const HomeBannerSlider = ({data}) => {
     const navigationPrevRef = React.useRef(null)

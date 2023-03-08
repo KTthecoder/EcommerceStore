@@ -176,7 +176,7 @@ const EditShippingInfoScreen = () => {
                     </div>
                 </div>
             </div>
-            <Footer/>
+            {data && <Footer/>}
         </>
     )
 }

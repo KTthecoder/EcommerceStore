@@ -159,7 +159,7 @@ const ProductDetailsScreen = () => {
           {data && <ProductSlider title={'See Also'} data={data['seeAlso']}/>}
         </div>
       </div>
-      <Footer/>
+      {data && <Footer/>}
     </>
   )
 }

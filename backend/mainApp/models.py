@@ -21,6 +21,13 @@ class BannersModel(models.Model):
 
     def __str__(self):
         return self.frontImg.url
+    
+class ProductDescImages(models.Model):
+    image = ResizedImageField(force_format="WEBP", quality=80, upload_to="productImages/")
+    imageAlt = models.CharField(max_length=250)
+
+    def __str__(self):
+        return self.image.url
 
 class ProductModel(models.Model):
     frontImg = ResizedImageField(force_format="WEBP", quality=80, upload_to="productFrontImg/")
@@ -36,6 +43,7 @@ class ProductModel(models.Model):
     category = models.ForeignKey(ProductCategories, related_name='products', on_delete=models.CASCADE)
     subCategory = models.ForeignKey(ProductSubCategories, on_delete=models.CASCADE)
     store = models.ForeignKey(StoreModel, on_delete=models.CASCADE)
+    date = models.DateField(auto_now=False, auto_now_add=True)
 
     def __str__(self):
         return self.title

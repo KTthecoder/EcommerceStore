@@ -51,7 +51,7 @@ const ProductsInCategoryScreen = () => {
                     </div>                    
                 </div>
             </div>
-            <Footer/>
+            {data && <Footer/>}
         </>
        
     )
