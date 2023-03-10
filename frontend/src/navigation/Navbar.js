@@ -10,6 +10,7 @@ const Navbar = () => {
 
     useEffect(() => {
         setShowMenu(false)
+        setSearchValue('')
     }, [location])
 
     return (

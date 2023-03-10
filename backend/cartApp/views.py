@@ -218,14 +218,16 @@ def ConfirmOrder(request, orderId):
     data = {
         'order' : None,
     }
+    try:
+        user = request.user
+        order = OrderModel.objects.get(user = user, id = orderId)
+        order.ordered = True
+        order.save()
+        orderSerializer = CartOrderSerializer(order, many = False)
+        data['order'] = orderSerializer.data
 
-    user = request.user
-    order = OrderModel.objects.get(user = user, id = orderId)
-    order.ordered = True
-    order.save()
-    orderSerializer = CartOrderSerializer(order, many = False)
-    data['order'] = orderSerializer.data
-
-    return Response(data, status=status.HTTP_200_OK)
+        return Response(data, status=status.HTTP_200_OK)
+    except:
+        return Response({'order' : 'No order'}, status=status.HTTP_200_OK)
 
    

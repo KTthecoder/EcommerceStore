@@ -1,9 +1,10 @@
 .CartContainer{
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
     margin-top: 75px;
+    min-height: 50vh;
 }
 
 .CartContainer1{

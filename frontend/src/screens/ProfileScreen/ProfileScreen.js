@@ -24,7 +24,7 @@ const ProfileScreen = () => {
                             <p className='ProfileContainer1MainBlockPriceTop'>Price</p>
                             <button className='ProfileContainer1MainBlockBtnTop'>Action</button>
                         </div>
-                        {data && data['orders'].map((item) => (
+                        {data && data['orders'] != "No Orders" ? data['orders'].map((item) => (
                             <div className='ProfileContainer1MainBlock' key={item.id}>
                                 <div className='ProfileContainer1MainBlockDiv'>
                                     <h1 className='ProfileContainer1MainBlockH1'>Order #{item.id}</h1>
@@ -35,7 +35,13 @@ const ProfileScreen = () => {
                                     <button className='ProfileContainer1MainBlockBtn' onClick={() => navigation(`/order/${item.id}`)}>See Order</button>
                                 </div>
                             </div>
-                        ))}
+                        )) : (
+                            <div className='ProfileContainer1MainBlock'>
+                                <div className='ProfileContainer1MainBlockDiv'>
+                                    <h1 className='ProfileContainer1MainBlockH1'>No Orders</h1>                    
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

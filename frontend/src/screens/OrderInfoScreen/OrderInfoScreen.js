@@ -29,7 +29,7 @@ const OrderInfoScreen = () => {
                             {data && data['Response'] != 'Your Shopping Cart is Empty' ? 
                                 data && data['order'].map((item) => (
                                     <>
-                                        <p className='CartContainerRightName'>Package from {item['product']['store']['name']}</p>
+                                        {/* <p className='CartContainerRightName'>Package from {item['product']['store']['name']}</p> */}
                                         <CartItem type={true} key={item.product.id} orderItemId={item.id} shortDescription={item.product.shortDescription} quantity={item.quantity} productId={item.product.id} image={item.product.frontImg} title={item.product.title} imageAlt={item.product.frontImgAlt} normalPrice={item.product.normalPrice} discountPrice={item.product.discountPrice} slug={item.product.slug}/>
                                     </>
                                 )) 

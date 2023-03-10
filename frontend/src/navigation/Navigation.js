@@ -34,6 +34,7 @@ function Navigation() {
       <Route exact path='/category/:slug' element={<ProductsInCategoryScreen/>} />
       <Route exact path='/store/:slug' element={<ProductsInStoreScreen/>} />
       <Route exact path='/all-categories' element={<AllCategoriesScreen/>} />
+      <Route path='*' element={<HomeScreen/>} />
 
       {/* With Authentication */}
       <Route exact path='/cart' element={<PrivateRoute/>}>

@@ -12,7 +12,7 @@ const ConfirmOrderScreen = () => {
 
     return (
         <>
-            {data && (
+            {data && data['order'] != 'No order' ? (
                 <>
                     <div className='ConfirmOrderContainer'>
                         <div className='ConfirmOrderContainer1'>
@@ -32,6 +32,30 @@ const ConfirmOrderScreen = () => {
                             <div className='CartContainerRightMainDiv'>
                                 <h3>Total</h3>
                                 <p>${data['order']['order_total']}</p>
+                            </div>
+                            <button className='CartContainerRightMainDivBtn' onClick={() => navigation('/')}>Go To Home</button>
+                        </div>
+                    </div>
+                    <Footer/>
+                </>
+            ) : (
+                <>
+                    <div className='ConfirmOrderContainer'>
+                        <div className='ConfirmOrderContainer1'>
+                            <img src={OrderIcon} className='ConfirmOrderContainerIcon'/>
+                            {/* <a href="https://www.flaticon.com/free-icons/order" title="order icons">Order icons created by Uniconlabs - Flaticon</a> */}
+                            <h1 className='ConfirmOrderContainer1H1' style={{marginBottom: 40}}>This order does not exists</h1>
+                            <div className='CartContainerRightMainDiv'>
+                                <h3>Subtotal</h3>
+                                <p>$0</p>
+                            </div>
+                            <div className='CartContainerRightMainDiv'>
+                                <h3>Shipping</h3>
+                                <p>$0</p>
+                            </div>
+                            <div className='CartContainerRightMainDiv'>
+                                <h3>Total</h3>
+                                <p>$0</p>
                             </div>
                             <button className='CartContainerRightMainDivBtn' onClick={() => navigation('/')}>Go To Home</button>
                         </div>
