@@ -49,7 +49,7 @@ function Navigation() {
         <Route exact path='/payment' element={<PaymentScreen/>} />
       </Route>
       <Route exact path='/confirm-order' element={<PrivateRoute/>}>
-        <Route exact path='/confirm-order' element={<ConfirmOrderScreen/>} />
+        <Route path='/confirm-order/:orderId' element={<ConfirmOrderScreen/>} />
       </Route>
       <Route exact path='/favorite' element={<PrivateRoute/>}>
         <Route exact path='/favorite' element={<FavoriteScreen/>} />

@@ -102,6 +102,35 @@ def ProductsByCategory(request, slug):
 
     return Response(data, status=status.HTTP_200_OK)
 
+@api_view(['GET'])
+def BestsellersProducts(request):
+    data = {
+        'categories' : None,
+        'categoryProducts' : None,
+    }
+
+    categories = ProductCategories.objects.all()
+    bestsellersProducts = ProductModel.objects.all().order_by('boughtBy')[:10]
+
+    if not categories.exists():
+        data = {'Response' : 'No Categories'}
+        return Response(data, status=status.HTTP_200_OK)
+
+    # try:
+    #     categoryProducts = ProductModel.objects.get(slug = slug)
+    # except ProductCategories.DoesNotExist:
+    #     data = {'Response' : 'This category does not exists'}
+    #     return Response(data, status=status.HTTP_200_OK)
+    
+    categoriesSerializer = HomeCategoriesSerializer(categories, many = True)
+    bestsellersProductsSerializer = HomeProductSerializer(bestsellersProducts, many = True)
+    # clothesProductsSerializer = ProductsByCategoriesSerializer(categoryProducts, many = False)
+    
+    data['categories'] = categoriesSerializer.data
+    data['categoryProducts'] = bestsellersProductsSerializer.data
+
+    return Response(data, status=status.HTTP_200_OK)
+
 # Products found using searchbar
 @api_view(['GET'])
 def FoundProducts(request, search):

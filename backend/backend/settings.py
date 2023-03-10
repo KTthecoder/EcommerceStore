@@ -65,6 +65,8 @@ REST_FRAMEWORK = {
     )
 }
 
+STRIPE_SECERT_KEY = "sk_test_51MVCeYCKMWUsmhhqcDX47si6ZdliUefZsuVLwZYqgLHn8k2DLqHEnvxQOUmLfNA4UOa3kwaz1PxR56jkIzY9i1j0005YWZl2SF"
+
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=3600),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),

@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@stripe/react-stripe-js": "^1.16.5",
+    "@stripe/stripe-js": "^1.48.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "formik": "^2.2.9",
+    "html-react-parser": "^3.0.12",
     "jwt-decode": "^3.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -17,6 +20,7 @@
     "react-select": "^5.7.0",
     "react-slideshow-image": "^4.2.0",
     "react-swipe": "^6.0.4",
+    "retry-stripe-loader": "^0.1.1",
     "swipe-js-iso": "^2.1.5",
     "swiper": "^9.0.4",
     "web-vitals": "^2.1.4"

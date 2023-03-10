@@ -43,6 +43,7 @@ urlpatterns = [
     #mainApp
     path('api/home', HomePage, name='HomePage'),
     path('api/category/<slug:slug>', ProductsByCategory, name='ProductsByCategory'),
+    path('api/bestsellers', BestsellersProducts, name='BestsellersProducts'),
     path('api/products/<str:search>', FoundProducts, name='FoundProducts'),
     path('api/product/<slug:slug>', ProductDetails, name='ProductDetails'),
     path('api/store/<slug:slug>', ProductsByStore, name='ProductsByStore'),
@@ -56,6 +57,8 @@ urlpatterns = [
     path('api/shipping-address/edit/<int:orderId>', EditShippingAddress, name='EditShippingAddress'),
     path('api/order/remove/<int:orderId>', RemoveOrder, name='RemoveOrder'),
     path('api/order/<int:orderId>', OrderInfo, name='OrderInfo'),
+    path('api/stripe/create-checkout-session', StripeCheckout, name='StripeCheckout'),
+    path('api/confirm/order/<int:orderId>', ConfirmOrder, name='ConfirmOrder'),
 
     path('api/payment', PaymentPage, name='PaymentPage'),
 ]

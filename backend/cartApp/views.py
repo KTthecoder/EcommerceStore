@@ -4,6 +4,10 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
+import stripe
+from decimal import Decimal
+from django.conf import settings
+from django.shortcuts import redirect
 
 # Create your views here.
 @permission_classes([IsAuthenticated])
@@ -188,3 +192,40 @@ def OrderInfo(request, orderId):
     orderItemSerializer = CartOrderItemSerializer(orderItems, many = True)
     data['order'] = orderItemSerializer.data
     return Response(data, status=status.HTTP_200_OK)
+
+@permission_classes([IsAuthenticated])
+@api_view(['POST'])
+def StripeCheckout(request):  
+    stripe.api_key = settings.STRIPE_SECERT_KEY
+    try:
+        try:
+            paymentIntent = stripe.PaymentIntent.create(
+                amount = 100, 
+                currency = 'usd', 
+                payment_method_types = ['card'],
+                # receipt_email = request.data['email'],
+            )
+            return Response(status=status.HTTP_200_OK, data=paymentIntent.client_secret)
+        except:
+            return Response(status=status.HTTP_200_OK, data={'Error' : 'Error while creating payment intent'})
+    except Exception as e:
+        print(e)
+        return Response({'error' : 'Something wet wrong when creating stripe checkout session'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+@permission_classes([IsAuthenticated])
+@api_view(['GET'])
+def ConfirmOrder(request, orderId):
+    data = {
+        'order' : None,
+    }
+
+    user = request.user
+    order = OrderModel.objects.get(user = user, id = orderId)
+    order.ordered = True
+    order.save()
+    orderSerializer = CartOrderSerializer(order, many = False)
+    data['order'] = orderSerializer.data
+
+    return Response(data, status=status.HTTP_200_OK)
+
+   

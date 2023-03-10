@@ -4,13 +4,17 @@ from mainApp.serializers import StoreModelSerializer
 
 class CartOrderSerializer(serializers.ModelSerializer):
     order_total = serializers.SerializerMethodField('get_order_total')
+    username = serializers.SerializerMethodField('get_username')
     
     class Meta:
         model = OrderModel
-        fields = ['id', 'user', 'ordered', 'dataOrdered', 'order_total']
+        fields = ['id', 'user', 'username', 'ordered', 'dataOrdered', 'order_total']
 
     def get_order_total(self, order):
         return order.order_total
+    
+    def get_username(self, order):
+        return order.user.username
     
 class CartProductsSerializer(serializers.ModelSerializer):
     store = StoreModelSerializer(many = False, read_only = True)

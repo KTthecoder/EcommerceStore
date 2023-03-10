@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import ProductDetailsSlider from '../../components/ProductDetailsSlider/ProductDetailsSlider'
 import ProductSlider from '../../components/ProductSlider/ProductSlider'
 import './ProductDetailsScreen.css'
@@ -7,6 +7,7 @@ import Footer from '../../components/Footer/Footer'
 import useFetchGet from '../../hooks/useFetchGet'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { AuthContext } from '../../contexts/AuthProvider';
+import parse from 'html-react-parser';
 
 const ProductDetailsScreen = () => {
   const { slug } = useParams()
@@ -136,7 +137,7 @@ const ProductDetailsScreen = () => {
         <div className='ProductDetailsContainer4'>
           <div className='ProductDetailsContainer2Body'>
             <h1 className='ProductDetailsContainer2BodyH1'>Description</h1>
-
+            {data && data ? parse(data['product']['description']) : ''}
             {/* <img src={photo} className='ProductDetailsContainer2BodyImg'/>
             <h3 className='ProductDetailsContainer2BodyH3'>Duis pellentesque mi vitae justo suscipit luctus.</h3>
             <p className='ProductDetailsContainer2BodyP'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc massa nisi, efficitur et odio quis, faucibus facilisis leo. Nunc volutpat nisl ut sem pulvinar tincidunt. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>

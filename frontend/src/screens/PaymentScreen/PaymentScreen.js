@@ -1,14 +1,42 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import CartItem from '../../components/CartItem'
 import CheckoutTour from '../../components/CheckoutTour'
 import Footer from '../../components/Footer/Footer'
 import useFetchGetAuth from '../../hooks/useFetchGetAuth'
+import useFetchGet from '../../hooks/useFetchGet'
 import './PaymentScreen.css'
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+import CheckoutForm from '../../components/CheckoutForm'
+
+const stripePromise = loadStripe('pk_test_51MVCeYCKMWUsmhhqTTSSUu2p0XxdT3rHmX8Upe8pJkjR1DkuCThrdeshswZCFzKqxEshbNciFswcPXs16WhTufxT00vBMFD6jg');
 
 const PaymentScreen = () => {
     const navigation = useNavigate()
     const { data } = useFetchGetAuth('http://127.0.0.1:8000/api/payment')
+    const [clientSecret, setClientSecret] = useState(null)
+
+    useEffect(() => {
+        fetch("http://127.0.0.1:8000/api/stripe/create-checkout-session", {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            }
+        })
+        .then(res => res.json())
+        .then((data) => {
+            setClientSecret(data)
+            console.log(data)
+        })
+        .catch(err => {
+            console.log(err.message)
+        })
+    }, [])
+
+    const options = {
+        clientSecret: clientSecret,
+    };
 
     return (
         <>
@@ -27,12 +55,11 @@ const PaymentScreen = () => {
                         <div className='CartContainerRight'>
                             {data && data['Response'] != 'Your Shopping Cart is Empty' ? 
                                 data && data['order'].map((item) => (
-                                    <>
-                                        <p className='CartContainerRightName'>Package from {item['product']['store']['name']}</p>
-                                        <CartItem type={true} key={item.product.id} orderItemId={item.id} shortDescription={item.product.shortDescription} quantity={item.quantity} productId={item.product.id} image={item.product.frontImg} title={item.product.title} imageAlt={item.product.frontImgAlt} normalPrice={item.product.normalPrice} discountPrice={item.product.discountPrice} slug={item.product.slug}/>
-                                    </>
-                                )) 
-                            : <h1>Shopping Cart Is Empty</h1>}
+                                    <div key={item.product.id}>
+                                        {/* <p className='CartContainerRightName'>Package from {item['product']['store']['name']}</p> */}
+                                        <CartItem type={true} orderItemId={item.id} shortDescription={item.product.shortDescription} quantity={item.quantity} productId={item.product.id} image={item.product.frontImg} title={item.product.title} imageAlt={item.product.frontImgAlt} normalPrice={item.product.normalPrice} discountPrice={item.product.discountPrice} slug={item.product.slug}/>
+                                    </div>
+                                )) : <h1>Shopping Cart Is Empty</h1>}
                         </div>
                     </div>
                     <div className='CartContainerRightMain'>
@@ -59,7 +86,13 @@ const PaymentScreen = () => {
                             <h3>Total</h3>
                             <p>${data && data['order'][0]['order']['order_total']}</p>
                         </div>
-                        <button className='CartContainerRightMainDivBtn' onClick={() => navigation('/confirm-order')}>Order & Pay</button>
+                        {/* <button className='CartContainerRightMainDivBtn' onClick={() => {}}>Order & Pay</button> */}
+                        {/* <button className='CartContainerRightMainDivBtn' onClick={() => navigation('/confirm-order')}>Order & Pay</button> */}
+                        {stripePromise && clientSecret && (
+                            <Elements stripe={stripePromise} options={options}>
+                                {data && <CheckoutForm orderId={data['order'][0]['order']['id']}/>}
+                            </Elements>
+                        )}
                     </div>
                 </div>
             </div>
