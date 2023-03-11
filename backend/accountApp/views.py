@@ -78,7 +78,7 @@ def MyOrders(request):
         'orders' : None
     }
 
-    orders = OrderModel.objects.filter(user = request.user, ordered = True)
+    orders = OrderModel.objects.filter(user = request.user, ordered = True).order_by('-id')
 
     if not orders.exists():
         data['orders'] = 'No Orders'
