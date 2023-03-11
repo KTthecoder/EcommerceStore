@@ -11,6 +11,15 @@ import Navbar from '../../navigation/Navbar';
 const HomeScreen = () => {
     const { data, loading } = useFetchGet('http://127.0.0.1:8000/api/home')
 
+    if(loading){
+        return (
+            <>
+                <Navbar/>
+                <div style={{height: '150vh'}}></div>
+            </>
+        )
+    }
+
     return (
         <>
             {!loading && <Navbar/>}

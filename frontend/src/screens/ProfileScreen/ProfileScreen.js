@@ -9,6 +9,15 @@ const ProfileScreen = () => {
     const { data, loading } = useFetchGetAuth('http://127.0.0.1:8000/api/orders')
     const navigation = useNavigate()
 
+    if(loading){
+        return (
+          <>
+            <Navbar/>
+            <div style={{height: '150vh'}}></div>
+          </>
+        )
+    }
+
     return (
         <>
             {!loading && <Navbar/>}

@@ -39,6 +39,15 @@ const EditShippingInfoScreen = () => {
         })
     }
 
+    if(loading){
+        return (
+            <>
+                <Navbar/>
+                <div style={{height: '150vh'}}></div>
+            </>
+        )
+    }
+
     return (
         <>
             {!loading && <Navbar/>}

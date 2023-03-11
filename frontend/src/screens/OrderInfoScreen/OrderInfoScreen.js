@@ -8,9 +8,17 @@ import Navbar from '../../navigation/Navbar'
 import '../../screens/PaymentScreen/PaymentScreen.css'
 
 const OrderInfoScreen = () => {
-    const navigation = useNavigate()
     const { orderId } = useParams()
     const { data, loading } = useFetchGetAuth(`http://127.0.0.1:8000/api/order/${orderId}`)
+
+    if(loading){
+        return (
+            <>
+                <Navbar/>
+                <div style={{height: '150vh'}}></div>
+            </>
+        )
+    }
 
     return (
         <>

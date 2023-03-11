@@ -11,6 +11,15 @@ const ConfirmOrderScreen = () => {
     const { orderId } = useParams()
     const { data, loading } = useFetchGetAuth(`http://127.0.0.1:8000/api/confirm/order/${orderId}`)
 
+    if(loading){
+        return (
+            <>
+                <Navbar/>
+                <div style={{height: '150vh'}}></div>
+            </>
+        )
+    }
+
     return (
         <>
             {!loading && <Navbar/>}

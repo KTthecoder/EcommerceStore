@@ -7,6 +7,15 @@ import Navbar from '../../navigation/Navbar'
 
 const FavoriteScreen = () => {
     const { data, reload, setReload, loading } = useFetchGetAuth('http://127.0.0.1:8000/api/favorite')
+    
+    if(loading){
+        return (
+            <>
+                <Navbar/>
+                <div style={{height: '150vh'}}></div>
+            </>
+        )
+    }
 
     return (
         <>
