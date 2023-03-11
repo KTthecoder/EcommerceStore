@@ -1,0 +1,24 @@
+.ErrorPageContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.ErrorPageLink{
+    width: 200px;
+    padding: 10px 0px;
+    text-align: center;
+    background-color: #111;
+    color: white;
+    border-radius: 5px;
+    font-weight: 500;
+    margin-top: 30px;
+}
+
+.ErrorPageContainer h1{
+    font-size: 1.25rem;
+    font-weight: 500;
+}

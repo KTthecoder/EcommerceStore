@@ -6,10 +6,11 @@ import { useNavigate } from 'react-router-dom'
 import Footer from '../../components/Footer/Footer'
 import useFetchGetAuth from '../../hooks/useFetchGetAuth'
 import { AuthContext } from '../../contexts/AuthProvider'
+import Navbar from '../../navigation/Navbar'
 
 const CartScreen = () => {
     const navigation = useNavigate()
-    const { data, setReload, reload } = useFetchGetAuth('http://127.0.0.1:8000/api/cart')
+    const { data, setReload, reload, loading } = useFetchGetAuth('http://127.0.0.1:8000/api/cart')
     const { accessToken } = useContext(AuthContext)
 
     const DeleteOrder = () => {
@@ -31,7 +32,8 @@ const CartScreen = () => {
 
     return (
         <>
-            <div className='CartContainer'>
+            <Navbar/>
+            {!loading && <div className='CartContainer'>
                 <div className='CartContainer1'>
                     <div className='CartContainerLeft'>
                         <CheckoutTour type={'cart'}/>
@@ -75,8 +77,8 @@ const CartScreen = () => {
                         
                     </div>
                 </div>
-            </div>
-            {data && <Footer/>}
+            </div>}
+            {!loading && <Footer/>}
         </>
     )
 }

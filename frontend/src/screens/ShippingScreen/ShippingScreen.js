@@ -7,10 +7,11 @@ import CheckoutCartItem from '../../components/CheckoutCartItem';
 import Footer from '../../components/Footer/Footer';
 import useFetchGetAuth from '../../hooks/useFetchGetAuth';
 import { AuthContext } from '../../contexts/AuthProvider';
+import Navbar from '../../navigation/Navbar';
 
 const ShippingScreen = () => {
     const navigation = useNavigate()
-    const { data, reload, setReload } = useFetchGetAuth('http://127.0.0.1:8000/api/shipping-address')
+    const { data, reload, setReload, loading } = useFetchGetAuth('http://127.0.0.1:8000/api/shipping-address')
     const { accessToken } = useContext(AuthContext)
 
     const AddShippingInfo = (values) => {
@@ -40,7 +41,8 @@ const ShippingScreen = () => {
 
     return (
         <>
-            <div className='CartContainer'>
+            <Navbar/>
+            {!loading && <div className='CartContainer'>
                 <div className='CartContainer1'>
                     <div className='CartContainerLeft1'>
                         <CheckoutTour type={'shipping'}/>
@@ -180,8 +182,8 @@ const ShippingScreen = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-            {data && <Footer/>}
+            </div>}
+            {!loading && <Footer/>}
         </>
     )
 }

@@ -3,14 +3,16 @@ import './ProfileScreen.css'
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import Footer from '../../components/Footer/Footer';
 import useFetchGetAuth from '../../hooks/useFetchGetAuth'
+import Navbar from '../../navigation/Navbar';
 
 const ProfileScreen = () => {
-    const { data } = useFetchGetAuth('http://127.0.0.1:8000/api/orders')
+    const { data, loading } = useFetchGetAuth('http://127.0.0.1:8000/api/orders')
     const navigation = useNavigate()
 
     return (
         <>
-            <div className='ProfileContainer'>
+            {!loading && <Navbar/>}
+            {!loading && <div className='ProfileContainer'>
                 <div className='ProfileContainer1'>
                     <h1 className='ProfileContainer1H1'>Your Orders</h1>
                     <div className='ProfileContainer1Header'>
@@ -44,8 +46,8 @@ const ProfileScreen = () => {
                         )}
                     </div>
                 </div>
-            </div>
-            {data && <Footer/>}
+            </div>}
+            {!loading && <Footer/>}
         </>
     )
 }

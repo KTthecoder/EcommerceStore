@@ -3,13 +3,15 @@ import './FavoriteScreen.css'
 import FavoriteItem from '../../components/FavoriteItem'
 import Footer from '../../components/Footer/Footer'
 import useFetchGetAuth from '../../hooks/useFetchGetAuth'
+import Navbar from '../../navigation/Navbar'
 
 const FavoriteScreen = () => {
-    const { data, reload, setReload } = useFetchGetAuth('http://127.0.0.1:8000/api/favorite')
+    const { data, reload, setReload, loading } = useFetchGetAuth('http://127.0.0.1:8000/api/favorite')
 
     return (
         <>
-            <div className='CartContainer'>
+            {!loading && <Navbar/>}
+            {!loading && <div className='CartContainer'>
                 <div className='CartContainer1'>
                     <div className='CartContainerLeft'>
                         <div className='CartHeaderr'>
@@ -27,8 +29,8 @@ const FavoriteScreen = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-            {data && <Footer/>}
+            </div>}
+            {!loading && <Footer/>}
         </>
     )
 }

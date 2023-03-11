@@ -5,16 +5,18 @@ import FiltersMobile from '../../components/FiltersMobile/FiltersMobile'
 import Footer from '../../components/Footer/Footer'
 import ProductInSlider from '../../components/ProductInSlider'
 import useFetchGet from '../../hooks/useFetchGet'
+import Navbar from '../../navigation/Navbar'
 import './FoundProductsScreen.css'
 
 const FoundProductsScreen = () => {
     const [showFilters, setShowFilters] = useState(false)
     const { slug } = useParams()
-    const { data } = useFetchGet(`http://127.0.0.1:8000/api/products/${slug}`)
+    const { data, loading } = useFetchGet(`http://127.0.0.1:8000/api/products/${slug}`)
 
     return (
         <>
-            <div className='FoundProductsContainer'>
+            {!loading && <Navbar/>}
+            {!loading && <div className='FoundProductsContainer'>
                 <FiltersMobile show={showFilters} setShow={setShowFilters} />
                 <div className='FoundProductsContainer1'>
                     <div className='FoundProductsContainer1Top'>
@@ -43,8 +45,8 @@ const FoundProductsScreen = () => {
                         </div>
                     </div>      
                 </div>
-            </div>
-            {data && <Footer/>}
+            </div>}
+            {!loading && <Footer/>}
         </>
     )
 }

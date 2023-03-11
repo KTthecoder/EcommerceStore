@@ -4,16 +4,18 @@ import CartItem from '../../components/CartItem'
 import CheckoutTour from '../../components/CheckoutTour'
 import Footer from '../../components/Footer/Footer'
 import useFetchGetAuth from '../../hooks/useFetchGetAuth'
+import Navbar from '../../navigation/Navbar'
 import '../../screens/PaymentScreen/PaymentScreen.css'
 
 const OrderInfoScreen = () => {
     const navigation = useNavigate()
     const { orderId } = useParams()
-    const { data } = useFetchGetAuth(`http://127.0.0.1:8000/api/order/${orderId}`)
+    const { data, loading } = useFetchGetAuth(`http://127.0.0.1:8000/api/order/${orderId}`)
 
     return (
         <>
-            <div className='CartContainer'>
+            {!loading && <Navbar/>}
+            {!loading && <div className='CartContainer'>
                 <div className='CartContainer1'>
                     <div className='CartContainerLeft'>
                         <CheckoutTour type={'finish'}/>
@@ -67,8 +69,8 @@ const OrderInfoScreen = () => {
                         {/* <button className='CartContainerRightMainDivBtn' onClick={() => navigation('/confirm-order')}>Order & Pay</button> */}
                     </div>
                 </div>
-            </div>
-            {data && <Footer/>}
+            </div>}
+            {!loading && <Footer/>}
         </>
     )
 }

@@ -5,18 +5,20 @@ import FiltersMobile from '../../components/FiltersMobile/FiltersMobile'
 import Footer from '../../components/Footer/Footer'
 import ProductInSlider from '../../components/ProductInSlider'
 import useFetchGet from '../../hooks/useFetchGet'
+import Navbar from '../../navigation/Navbar'
 
 const ProductsInStoreScreen = () => {
     const [showFilters, setShowFilters] = useState(false)
     const { slug } = useParams()
-    const { data } = useFetchGet(`http://127.0.0.1:8000/api/store/${slug}`)
+    const { data, loading } = useFetchGet(`http://127.0.0.1:8000/api/store/${slug}`)
 
     return (
         <>
-            <div className='FoundProductsContainer1Topp1'>
+            {!loading && <Navbar/>}
+            {!loading && <div className='FoundProductsContainer1Topp1'>
                 <p className='FoundProductsContainer1TopH112'>{slug.slice(0, 1).toUpperCase() + slug.slice(1, slug.length)}</p>
-            </div>
-            <div className='FoundProductsContainer'>
+            </div>}
+            {!loading && <div className='FoundProductsContainer'>
                 <FiltersMobile show={showFilters} setShow={setShowFilters} />
                 <div className='FoundProductsContainer1'>
                     <button className='FoundProductsContainer1Btn' onClick={() => setShowFilters(true)}>
@@ -49,8 +51,8 @@ const ProductsInStoreScreen = () => {
                         </div>
                     </div>                    
                 </div>
-            </div>
-            {data && <Footer/>}
+            </div>}
+            {!loading && <Footer/>}
         </>
        
     )

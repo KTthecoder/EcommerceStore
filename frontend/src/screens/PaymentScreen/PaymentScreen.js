@@ -9,12 +9,13 @@ import './PaymentScreen.css'
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 import CheckoutForm from '../../components/CheckoutForm'
+import Navbar from '../../navigation/Navbar'
 
 const stripePromise = loadStripe('pk_test_51MVCeYCKMWUsmhhqTTSSUu2p0XxdT3rHmX8Upe8pJkjR1DkuCThrdeshswZCFzKqxEshbNciFswcPXs16WhTufxT00vBMFD6jg');
 
 const PaymentScreen = () => {
     const navigation = useNavigate()
-    const { data } = useFetchGetAuth('http://127.0.0.1:8000/api/payment')
+    const { data, loading } = useFetchGetAuth('http://127.0.0.1:8000/api/payment')
     const [clientSecret, setClientSecret] = useState(null)
 
     useEffect(() => {
@@ -40,7 +41,8 @@ const PaymentScreen = () => {
 
     return (
         <>
-            <div className='CartContainer'>
+            {!loading && <Navbar/>}
+            {!loading && <div className='CartContainer'>
                 <div className='CartContainer1'>
                     <div className='CartContainerLeft'>
                         <CheckoutTour type={'payment'}/>
@@ -95,8 +97,8 @@ const PaymentScreen = () => {
                         )}
                     </div>
                 </div>
-            </div>
-            {data && <Footer/>}
+            </div>}
+            {!loading && <Footer/>}
         </>
     )
 }

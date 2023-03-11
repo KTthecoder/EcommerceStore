@@ -3,11 +3,13 @@ import './ProfileSettingsScreen.css'
 import { Link, NavLink } from "react-router-dom";
 import Footer from '../../components/Footer/Footer';
 import { AuthContext } from '../../contexts/AuthProvider';
+import Navbar from '../../navigation/Navbar';
 
 const ProfileSettingsScreen = () => {
     const { logoutUser } = useContext(AuthContext)
     return (
         <>
+            <Navbar/>
             <div className='ProfileContainer'>
                 <div className='ProfileContainer1'>
                     <h1 className='ProfileContainer1H1'>Your Orders</h1>

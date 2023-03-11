@@ -5,6 +5,7 @@ import { useContext } from 'react'
 import { AuthContext } from '../../contexts/AuthProvider'
 import { Formik } from 'formik';
 import Footer from '../../components/Footer/Footer'
+import Navbar from '../../navigation/Navbar'
 
 const LoginScreen = () => {
     const { loginUser } = useContext(AuthContext)
@@ -12,6 +13,7 @@ const LoginScreen = () => {
 
     return (
         <>
+            <Navbar/>
             <div className='LoginContainer'>
                 <div className='LoginContainer1'>
                     <div className='LoginContainer2'>

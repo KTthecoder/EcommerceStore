@@ -4,14 +4,16 @@ import OrderIcon from '../../static/icons/orderConfirm.png'
 import './ConfirmOrderScreen.css'
 import Footer from '../../components/Footer/Footer.js'
 import useFetchGetAuth from '../../hooks/useFetchGetAuth'
+import Navbar from '../../navigation/Navbar'
 
 const ConfirmOrderScreen = () => {
     const navigation = useNavigate()
     const { orderId } = useParams()
-    const { data } = useFetchGetAuth(`http://127.0.0.1:8000/api/confirm/order/${orderId}`)
+    const { data, loading } = useFetchGetAuth(`http://127.0.0.1:8000/api/confirm/order/${orderId}`)
 
     return (
         <>
+            {!loading && <Navbar/>}
             {data && data['order'] != 'No order' ? (
                 <>
                     <div className='ConfirmOrderContainer'>

@@ -2,10 +2,12 @@ import React from 'react'
 import './RegisterScreen.css'
 import { Link } from 'react-router-dom'
 import Footer from '../../components/Footer/Footer'
+import Navbar from '../../navigation/Navbar'
 
 const RegisterScreen = () => {
   return (
     <>
+        <Navbar/>
         <div className='LoginContainer'>
             <div className='LoginContainer1'>
                 <div className='LoginContainer2'>

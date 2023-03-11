@@ -5,6 +5,7 @@ import AllCategoriesScreen from '../screens/AllCategoriesScreen/AllCategoriesScr
 import CartScreen from '../screens/CartScreen/CartScreen'
 import ConfirmOrderScreen from '../screens/ConfirmOrderScreen/ConfirmOrderScreen'
 import EditShippingInfoScreen from '../screens/EditShippingInfoScreen/EditShippingInfoScreen'
+import ErrorPage from '../screens/ErrorPage/ErrorPage'
 import FavoriteScreen from '../screens/FavoriteScreen/FavoriteScreen'
 import FoundProductsScreen from '../screens/FoundProductsScreen/FoundProductsScreen'
 import HomeScreen from '../screens/HomeScreen/HomeScreen'
@@ -20,7 +21,6 @@ import RegisterScreen from '../screens/RegisterScreen/RegisterScreen'
 import ShippingScreen from '../screens/ShippingScreen/ShippingScreen'
 import PrivateRoute from '../utils/PrivateRoute'
 
-
 function Navigation() {
   return (
     <Routes>
@@ -34,7 +34,7 @@ function Navigation() {
       <Route exact path='/category/:slug' element={<ProductsInCategoryScreen/>} />
       <Route exact path='/store/:slug' element={<ProductsInStoreScreen/>} />
       <Route exact path='/all-categories' element={<AllCategoriesScreen/>} />
-      <Route path='*' element={<HomeScreen/>} />
+      <Route path='*' element={<ErrorPage/>} />
 
       {/* With Authentication */}
       <Route exact path='/cart' element={<PrivateRoute/>}>

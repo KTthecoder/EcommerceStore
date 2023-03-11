@@ -9,10 +9,7 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <ScrollToTop/>
-        <nav>
-          <Navbar/>
-        </nav>
-        <main>
+        <main >
           <Navigation/>
         </main>
       </AuthProvider>

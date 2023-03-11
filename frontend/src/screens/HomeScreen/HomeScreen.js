@@ -6,13 +6,15 @@ import ProductSliderSmall from '../../components/ProductSliderSmall/ProductSlide
 import CategoriesSwiper from '../../components/CategoriesSwiper/CategoriesSwiper';
 import Footer from '../../components/Footer/Footer';
 import useFetchGet from '../../hooks/useFetchGet';
+import Navbar from '../../navigation/Navbar';
 
 const HomeScreen = () => {
     const { data, loading } = useFetchGet('http://127.0.0.1:8000/api/home')
 
     return (
         <>
-            <div className='HomeContainer'>
+            {!loading && <Navbar/>}
+            {!loading && <div className='HomeContainer'>
                 {data && <HomeBannerSlider data={data['banners']}/>}     
                 {data && <CategoriesSwiper data={data['categories']} />}
                 <div className='HomeContainer1'>
@@ -24,8 +26,8 @@ const HomeScreen = () => {
                     {data && <ProductSlider title={'Bestsellers'} data={data['bestsellersProducts']} slug={'bestsellers'}/>}
                     {data && <ProductSlider title={data['sportProducts']['name']} data={data['sportProducts']['products']} slug={data['sportProducts']['slug']}/>}
                 </div>
-            </div>
-            {data && <Footer/>}
+            </div>}
+            {!loading && <Footer/>}
         </>
     )
 }
