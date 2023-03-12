@@ -8,6 +8,7 @@ import stripe
 from decimal import Decimal
 from django.conf import settings
 from django.shortcuts import redirect
+from decimal import Decimal
 
 # Create your views here.
 @permission_classes([IsAuthenticated])
@@ -200,10 +201,10 @@ def StripeCheckout(request):
     try:
         try:
             paymentIntent = stripe.PaymentIntent.create(
-                amount = 100, 
+                amount = int(Decimal(request.data['price']) * 100), 
                 currency = 'usd', 
                 payment_method_types = ['card'],
-                # receipt_email = request.data['email'],
+                receipt_email = request.data['email'],
             )
             return Response(status=status.HTTP_200_OK, data=paymentIntent.client_secret)
         except:

@@ -17,14 +17,12 @@ const FiltersDesktop = () => {
             <p className='FiltersMobileHeaderText'>Categories</p>
             <div className='FiltersMobileDiv1'>
                 <button className='FiltersMobileDivBtn'>Technology</button>
-                <button className='FiltersMobileDivBtn'>Groceries</button>
                 <button className='FiltersMobileDivBtn'>Clothes</button>
-                <button className='FiltersMobileDivBtn'>Technology</button>
+                <button className='FiltersMobileDivBtn'>Books</button>
+                <button className='FiltersMobileDivBtn'>Sport</button>
                 <button className='FiltersMobileDivBtn'>Groceries</button>
-                <button className='FiltersMobileDivBtn'>Clothes</button>
-                <button className='FiltersMobileDivBtn'>Technology</button>
-                <button className='FiltersMobileDivBtn'>Groceries</button>
-                <button className='FiltersMobileDivBtn'>Clothes</button>
+                <button className='FiltersMobileDivBtn'>Toys</button>
+                <button className='FiltersMobileDivBtn'>House and kitchen</button>
             </div>
             <p className='FiltersMobileHeaderText'>Product Reviews</p>
             <div className='FiltersMobileDivNext1'>

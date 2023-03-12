@@ -31,11 +31,11 @@ const ShippingScreen = () => {
           })
         })
         .then(res => res.json())
-        .then((data) => {
-            navigation('/payment')
+        .then((value) => {
+            navigation('/payment', {state: {price: data['order'][0]['order']['order_total'], email: data['order'][0]['order']['email']}})
         })
         .catch(err => {
-          console.log(err.message)
+          console.log("Error: " + err.message)
         })
     }
 

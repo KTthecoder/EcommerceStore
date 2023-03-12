@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import CartItem from '../../components/CartItem'
 import CheckoutTour from '../../components/CheckoutTour'
 import Footer from '../../components/Footer/Footer'
@@ -15,15 +15,21 @@ const stripePromise = loadStripe('pk_test_51MVCeYCKMWUsmhhqTTSSUu2p0XxdT3rHmX8Up
 
 const PaymentScreen = () => {
     const navigation = useNavigate()
+    const location = useLocation()
     const { data, loading } = useFetchGetAuth('http://127.0.0.1:8000/api/payment')
     const [clientSecret, setClientSecret] = useState(null)
 
     useEffect(() => {
+        console.log(location)
         fetch("http://127.0.0.1:8000/api/stripe/create-checkout-session", {
             method: 'POST',
             headers: {
-            'Content-Type': 'application/json',
-            }
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                price: location.state.price,
+                email: location.state.email,
+            })
         })
         .then(res => res.json())
         .then((data) => {
