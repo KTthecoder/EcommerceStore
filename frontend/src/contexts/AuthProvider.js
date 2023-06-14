@@ -47,29 +47,47 @@ const AuthProvider = (props) => {
     }
 
     let updateToken = async () => {
-        let response = await fetch('http://127.0.0.1:8000/api/token/refresh/', {
+        let response1 = await fetch('http://127.0.0.1:8000/api/token/verify/', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                'refresh' : refreshToken
+                'token' : refreshToken
             })
         })
-        let data = await response.json()
 
-        if(response.status == 200){
-            setAccessToken(data.access)
-            setUser(jwt_decode(data.access))
-            localStorage.setItem('accessToken', JSON.stringify(data.access))
-        }
-        else{
+        var data1 = await response1.json()
+
+        if(data1['detail'] === 'Token is invalid or expired'){
             logoutUser()
         }
+        
+        if(response1.status == 200){
+            let response = await fetch('http://127.0.0.1:8000/api/token/refresh/', {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    'refresh' : refreshToken
+                })
+            })
+            let data = await response.json()
+    
+            if(response.status == 200){
+                setAccessToken(data.access)
+                setUser(jwt_decode(data.access))
+                localStorage.setItem('accessToken', JSON.stringify(data.access))
+            }
+            else{
+                logoutUser()
+            }
 
-        if(loading){
-            setLoading(false)
-        }
+            if(loading){
+                setLoading(false)
+            }
+        } 
     }
 
     let contextData = {
@@ -79,10 +97,10 @@ const AuthProvider = (props) => {
         refreshToken: refreshToken,
         accessToken: accessToken,
         loading: loading,
+        updateToken: updateToken,
     }
 
     useEffect(() => {
-
         if(loading){
             updateToken()
         }

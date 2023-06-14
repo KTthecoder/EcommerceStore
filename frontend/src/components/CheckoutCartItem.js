@@ -1,7 +1,6 @@
 import React from 'react'
-import photo from '../static/img.webp'
 
-const CheckoutCartItem = ({type, reload, setReload, title, image, imageAlt, quantity, shortDescription, normalPrice, discountPrice, slug, productId, orderItemId}) => {
+const CheckoutCartItem = ({title, image, imageAlt, quantity, normalPrice, discountPrice}) => {
   return (
     <div className='CartContainerRightMain1CartItem'>
       <img src={`http://127.0.0.1:8000${image}`} className='CartContainerRightMain1CartItemImg' alt={imageAlt}/>

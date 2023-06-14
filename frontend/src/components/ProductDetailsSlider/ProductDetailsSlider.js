@@ -1,8 +1,6 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { Navigation, Pagination, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Link } from "react-router-dom";
-import photo from '../../static/banner1.jpg'
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';

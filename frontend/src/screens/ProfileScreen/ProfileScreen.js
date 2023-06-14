@@ -1,6 +1,6 @@
 import React from 'react'
 import './ProfileScreen.css'
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Footer from '../../components/Footer/Footer';
 import useFetchGetAuth from '../../hooks/useFetchGetAuth'
 import Navbar from '../../navigation/Navbar';

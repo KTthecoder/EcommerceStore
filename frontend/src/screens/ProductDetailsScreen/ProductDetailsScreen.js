@@ -149,22 +149,6 @@ const ProductDetailsScreen = () => {
           <div className='ProductDetailsContainer2Body'>
             <h1 className='ProductDetailsContainer2BodyH1'>Description</h1>
             {data && data ? parse(data['product']['description']) : ''}
-            {/* <img src={photo} className='ProductDetailsContainer2BodyImg'/>
-            <h3 className='ProductDetailsContainer2BodyH3'>Duis pellentesque mi vitae justo suscipit luctus.</h3>
-            <p className='ProductDetailsContainer2BodyP'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc massa nisi, efficitur et odio quis, faucibus facilisis leo. Nunc volutpat nisl ut sem pulvinar tincidunt. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
-            <h2 className='ProductDetailsContainer2BodyH2'>Etiam risus neque, tristique mollis felis at.</h2>
-            <div className='ProductDetailsContainer2BodyOlDiv'>
-              <ol className='ProductDetailsContainer2BodyOl'>
-                <li className='ProductDetailsContainer2BodyLi'>Duis laoreet sem a libero dapibus feugiat ut sed lacus.</li>
-                <li className='ProductDetailsContainer2BodyLi'>Suspendisse commodo vulputate enim</li>
-              </ol>
-            </div>
-            <div className='ProductDetailsContainer2BodyOlDiv'>
-              <ul className='ProductDetailsContainer2BodyUl'>
-                <li className='ProductDetailsContainer2BodyLi'>Mauris facilisis, nisi in convallis rutrum, ante purus pellentesque elit</li>
-                <li className='ProductDetailsContainer2BodyLi'>Maecenas eget venenatis mi, hendrerit pellentesque lacus</li>
-              </ul>
-            </div> */}
           </div>
         </div>
         <div className='ProductDetailsContainer3'>

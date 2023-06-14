@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import './ProfileSettingsScreen.css'
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Footer from '../../components/Footer/Footer';
 import { AuthContext } from '../../contexts/AuthProvider';
 import Navbar from '../../navigation/Navbar';

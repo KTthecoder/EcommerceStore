@@ -5,9 +5,10 @@ const useFetchGetAuth = (url) => {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [reload, setReload] = useState(false)
-  const { accessToken } = useContext(AuthContext)
+  const { accessToken, updateToken } = useContext(AuthContext)
 
   useEffect(() => {
+    updateToken()
     fetch(url, {
       method: 'GET',
       headers: {

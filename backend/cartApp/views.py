@@ -7,7 +7,6 @@ from rest_framework.permissions import IsAuthenticated
 import stripe
 from decimal import Decimal
 from django.conf import settings
-from django.shortcuts import redirect
 from decimal import Decimal
 
 # Create your views here.
@@ -147,7 +146,7 @@ def PaymentPage(request):
         'ShippingInfo' : None,
         'order' : None
     }
-
+    
     user = request.user
     order, created = OrderModel.objects.get_or_create(user = user, ordered = False)
     orderItems = OrderItemModel.objects.filter(order = order)

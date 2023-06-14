@@ -8,7 +8,6 @@ const PrivateRoute = () => {
     if(!loading){
         return user ? <Outlet/> : <Navigate to="/login" />
     }
-   
 }
 
 export default PrivateRoute

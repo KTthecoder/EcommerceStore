@@ -10,15 +10,15 @@ const AllCategoriesScreen = () => {
       <Navbar/>
       <div className='AllCategoriesContainer'>
         <div className='AllCategoriesContainerTop'>
-            <h1>All Categories</h1>
+          <h1>All Categories</h1>
         </div>
         <div className='AllCategoriesContainer1'>
-            <AllCategoriesBlock/>
-            <AllCategoriesBlock/>
-            <AllCategoriesBlock/>
-            <AllCategoriesBlock/>
-            <AllCategoriesBlock/>
-            <AllCategoriesBlock/>
+          <AllCategoriesBlock/>
+          <AllCategoriesBlock/>
+          <AllCategoriesBlock/>
+          <AllCategoriesBlock/>
+          <AllCategoriesBlock/>
+          <AllCategoriesBlock/>
         </div>
       </div>
       <Footer/>

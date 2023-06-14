@@ -1,6 +1,5 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { AuthContext } from '../contexts/AuthProvider'
 import AllCategoriesScreen from '../screens/AllCategoriesScreen/AllCategoriesScreen'
 import CartScreen from '../screens/CartScreen/CartScreen'
 import ConfirmOrderScreen from '../screens/ConfirmOrderScreen/ConfirmOrderScreen'

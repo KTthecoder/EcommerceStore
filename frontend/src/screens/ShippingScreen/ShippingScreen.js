@@ -78,7 +78,7 @@ const ShippingScreen = () => {
                                         handleBlur,
                                         handleSubmit,
                                     }) => (
-                                        <form onSubmit={handleSubmit} className='ShippingForm'>
+                                        <form onSubmit={handleSubmit} className='ShippingForm' autocomplete="no">
                                             <div className='ShippingFormDiv'>
 
                                                 <div className='ShippingFormDivNext'>
@@ -91,6 +91,7 @@ const ShippingScreen = () => {
                                                         value={values.firstName}
                                                         placeholder='First Name'
                                                         className='ShippingInp'
+                                                        autocomplete="no"
                                                     />
                                                     <p className='ShippingFormErrorP'>{errors.firstName && touched.firstName && errors.firstName}</p>
                                                 </div>
@@ -105,6 +106,7 @@ const ShippingScreen = () => {
                                                         value={values.lastName}
                                                         placeholder='Last Name'
                                                         className='ShippingInp'
+                                                        autocomplete="no"
                                                     />
                                                     <p className='ShippingFormErrorP'>{errors.lastName && touched.lastName && errors.lastName}</p>
                                                 </div>
@@ -121,6 +123,7 @@ const ShippingScreen = () => {
                                                     value={values.address}
                                                     placeholder='Address'
                                                     className='ShippingInp'
+                                                    autocomplete="no"
                                                 />
                                                 <p className='ShippingFormErrorP'>{errors.address && touched.address && errors.address}</p>
                                             </div>
@@ -137,6 +140,7 @@ const ShippingScreen = () => {
                                                         value={values.city}
                                                         placeholder='City'
                                                         className='ShippingInp'
+                                                        autocomplete="no"
                                                     />
                                                     <p className='ShippingFormErrorP'>{errors.city && touched.city && errors.city}</p>
                                                 </div>
@@ -151,6 +155,7 @@ const ShippingScreen = () => {
                                                         value={values.postalCode}
                                                         placeholder='Postal Code'
                                                         className='ShippingInp'
+                                                        autocomplete="no"
                                                     />
                                                     <p className='ShippingFormErrorP'>{errors.postalCode && touched.postalCode && errors.postalCode}</p>
                                                 </div>

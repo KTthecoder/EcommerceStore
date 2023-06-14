@@ -1,13 +1,11 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { Navigation, Pagination, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Link } from "react-router-dom";
-import photo from '../static/banner1.jpg'
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const HomeBannerSlider = ({data}) => {
     const navigationPrevRef = React.useRef(null)

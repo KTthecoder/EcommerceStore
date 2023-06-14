@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { Navigation, A11y, EffectFade } from 'swiper';
+import { Navigation, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';

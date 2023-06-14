@@ -157,16 +157,6 @@
     }
 }
 
-/* @media(min-width: 700px){
-    .FooterMidLeft{
-        align-items: flex-start;
-    }
-
-    .FooterMidLeftIcons{
-        justify-content: flex-start;
-    }
-} */
-
 @media(min-width: 800px){
     .FooterTopBtn{
         margin-top: 20px;

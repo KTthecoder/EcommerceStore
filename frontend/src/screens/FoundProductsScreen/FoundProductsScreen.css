@@ -300,7 +300,6 @@
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        /* background-image: url('../../static/banner1.jpg'); */
         object-fit: cover;
         background-position: center;
         background-size: cover;

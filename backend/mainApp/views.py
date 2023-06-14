@@ -1,9 +1,8 @@
 from .serializers import *
 from .models import *
 from rest_framework.response import Response
-from rest_framework.decorators import api_view, permission_classes
+from rest_framework.decorators import api_view
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticated
 from categoriesApp.models import ProductCategories
 from categoriesApp.serializers import HomeCategoriesSerializer
 import random
@@ -115,16 +114,9 @@ def BestsellersProducts(request):
     if not categories.exists():
         data = {'Response' : 'No Categories'}
         return Response(data, status=status.HTTP_200_OK)
-
-    # try:
-    #     categoryProducts = ProductModel.objects.get(slug = slug)
-    # except ProductCategories.DoesNotExist:
-    #     data = {'Response' : 'This category does not exists'}
-    #     return Response(data, status=status.HTTP_200_OK)
     
     categoriesSerializer = HomeCategoriesSerializer(categories, many = True)
     bestsellersProductsSerializer = HomeProductSerializer(bestsellersProducts, many = True)
-    # clothesProductsSerializer = ProductsByCategoriesSerializer(categoryProducts, many = False)
     
     data['categories'] = categoriesSerializer.data
     data['categoryProducts'] = bestsellersProductsSerializer.data
@@ -188,7 +180,6 @@ def ProductDetails(request, slug):
     data['product'] = productSerializer.data
 
     seeAlsoList = list(ProductModel.objects.all())
-    # Change to 10 after fill data
     seeAlso = random.sample(seeAlsoList, 8)
 
     seeAlsoSerializer = HomeProductsSerializer(seeAlso, many = True)
